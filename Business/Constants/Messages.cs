@@ -14,6 +14,12 @@ namespace Business.Constants
         public static string OperationClaimNotNull = "Lütfen Rol alanını boş geçmeyiniz!!";
 
 
+        public static string UserOperationClaimAdded = "Kullanıcı rolü başarıyla eklendi.";
+        public static string UserOperationClaimDeleted = "Kullanıcı rolü başarıyla silindi.";
+        public static string UserOperationClaimUpdated = "Kullanıcı rolü başarıyla güncellendi.";
+        public static string OperationClaimIdNotNull = "Lütfen Rol alanını boş geçmeyiniz!!";
+        public static string UserIddNotNull = "Lütfen kullanıcı alanını boş geçmeyiniz!!";
+
         public static string UserNotFound = "Kullanıcı bulunamadı.";
         public static string PasswordError = "Şifre Hatalı.";
         public static string SuccessfulLogin="Sisteme Giriş başarılı.";
@@ -25,6 +31,7 @@ namespace Business.Constants
         public static string AuthorizationDenied = "Yetkiniz yok.";
 
         public static string OperationClaimNameAlreadyExists = "Bu rol zaten mevcut.";
+
 
     }
 }

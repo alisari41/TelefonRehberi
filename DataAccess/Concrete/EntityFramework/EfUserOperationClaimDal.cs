@@ -10,7 +10,7 @@ using DataAccess.Concrete.EntityFramework.Contexts;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-    public class EfUserOperationClaimDal : EfEntityRepositoryBase<UserOperationClaim, TelefonRehberiContext>, IUserOperationClaimDa
+    public class EfUserOperationClaimDal : EfEntityRepositoryBase<UserOperationClaim, TelefonRehberiContext>, IUserOperationClaimDal
     {
     }
 }

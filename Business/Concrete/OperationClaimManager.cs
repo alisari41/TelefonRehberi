@@ -64,8 +64,7 @@ namespace Business.Concrete
 
             return new SuccessResult();//Boş bir successResult dönerse sorun yok Diğer metodda okumak için 
         }
-
-        //Doğrulama işlemini FluentValidation olarak yaptım
+        
         [CacheRemoveAspect("IOperationClaimService.Get")]// Yeni Ürün Eklendiğin Ön Belleği temizle. İçerisinde IProductService.Get olanları Yani Başı 
         public IResult Delete(OperationClaim operationClaim)
         {

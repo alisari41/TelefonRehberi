@@ -7,10 +7,12 @@ namespace Business.Constants
 {
     public static class Messages
     {//static yapmamın sebebi her seferinde new'lememek için
-        //Message lar sabit olduğu için buradan static kullanıyorum.
-        
+     //Message lar sabit olduğu için buradan static kullanıyorum.
+        public static string OperationClaimAdded = "Rol başarıyla eklendi.";
+        public static string OperationClaimDeleted = "Rol başarıyla silindi.";
+        public static string OperationClaimUpdated = "Rol başarıyla güncellendi.";
+        public static string OperationClaimNotNull = "Lütfen Rol alanını boş geçmeyiniz!!";
 
-        
 
         public static string UserNotFound = "Kullanıcı bulunamadı.";
         public static string PasswordError = "Şifre Hatalı.";
@@ -21,5 +23,8 @@ namespace Business.Constants
 
 
         public static string AuthorizationDenied = "Yetkiniz yok.";
+
+        public static string OperationClaimNameAlreadyExists = "Bu rol zaten mevcut.";
+
     }
 }

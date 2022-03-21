@@ -12,7 +12,7 @@ namespace DataAccess.Concrete.EntityFramework.Contexts
     { //Context = Nesnelerimiz ile veri tabanımızın iletişimi kuran nesnedir.
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(connectionString: @"Server=DESKTOP-8R3FVLB\SQLEXPRESS;Database=TelefonRehberi;Trusted_Connection=true");
+            optionsBuilder.UseSqlServer(connectionString: @"Server=DESKTOP-8R3FVLB\SQLEXPRESS;Database=TelefonRehberi;Trusted_Connection=true;");
         }
         public DbSet<OperationClaim> OperationClaims { get; set; }
         public DbSet<User> Users { get; set; }

@@ -21,9 +21,9 @@ namespace Business.DependencyResolves.Autofac
         protected override void Load(ContainerBuilder builder)
         {
             //Eğer birisi constructer'ında(yapıcı metod) IProductService isterse ona ProductManager vericez
-            //builder.RegisterType<ProductManager>().As<IProductService>();
-            //builder.RegisterType<EfProductDal>().As<IProductDal>();
-            
+            builder.RegisterType<OperationClaimManager>().As<IOperationClaimService>();
+            builder.RegisterType<EfOperationClaimDal>().As<IOperationClaimDal>();
+
 
 
 

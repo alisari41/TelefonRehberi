@@ -1,4 +1,5 @@
 ﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using FormHelper
 @model Core.Entities.Concrete.OperationClaim
 
 @{
@@ -9,7 +10,7 @@
 }
 
 <br />
-<h2>Fakülte Öğrenci Sayısı Ekle</h2>
+<h2>Rol Ekle</h2>
 <hr />
 
 <form asp-action="Add" asp-controller="OperationClaims" method="post" class="form-horizontal">
@@ -20,9 +21,13 @@
         <div class="col-md-9">
             <input type="text" asp-for="Name" class="form-control text-info" />
             <span asp-validation-for="Name" class="text-danger"></span>
+            
+            <p>@message</p>
+            <p>@success</p>
         </div>
     </div>
-    <
+
+    
     <div class="form-group">
         <div class="col-md-offset-3 col-md-9">
             <button class="btn btn-default guncellemebuton" style="margin-left: 5px; border: 2px solid #4db3ff;">
@@ -34,8 +39,6 @@
         </div>
     </div>
 </form>
-<p>@message</p>
-<p>@success</p>
 <p>@error</p>
 <a asp-action="Index" class="btn btn-default fas fa-backward" style="color: green"> Geri Dön</a>
 

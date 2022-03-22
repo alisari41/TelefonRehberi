@@ -4,7 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Business.Abstract;
+using Business.ValidationRules.FluentValidation;
 using Core.Entities.Concrete;
+using FormHelper;
 using WebMVC.CalismaDurumu;
 
 namespace WebMVC.Areas.Admin.Controllers
@@ -41,19 +43,35 @@ namespace WebMVC.Areas.Admin.Controllers
 
             try
             {
-                var result = _operationClaimService.Add(operationClaim);
-                if (result.Success)
-                {//Eğer doğru çalıştıysa datayı getir
-                    ViewBag.Success = result.Success;
-                    return RedirectToAction(nameof(Index));
-                }
+                var operationClaimValidator = new OperationClaimValidator();
+                var validationResult = operationClaimValidator.Validate(operationClaim);
 
-                ViewBag.Message = result.Message;
+                if (validationResult.IsValid)
+                {//Eğer doğru çalıştıysa datayı getir
+                    var result = _operationClaimService.Add(operationClaim);
+                    if (result.Success)
+                    {
+                        ViewBag.Success = result.Success;
+                        return RedirectToAction(nameof(Index));
+                    }
+                    ViewBag.Message = result.Message;
+                }
+                else
+                {
+                    foreach (var item in validationResult.Errors)
+                    {
+                        ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                    }
+                }
 
             }
             catch (Exception e)
             {
                 ViewBag.Error = e.Message;
+                //foreach (var item in e.)
+                //{
+                //    ModelState.AddModelError(item);
+                //}
             }
 
 

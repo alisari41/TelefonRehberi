@@ -1,5 +1,6 @@
 ﻿using System;
 using Castle.DynamicProxy;
+using FluentValidation;
 
 namespace Core.Utilities.Interceptors
 {
@@ -33,7 +34,8 @@ namespace Core.Utilities.Interceptors
             {
                 isSuccess = false;
                 OnException(invocation,e);
-                throw new Exception(e.Message);
+                //throw new Exception(e.Message);
+                throw new ValidationException(e.Message);
             }
             finally
             {

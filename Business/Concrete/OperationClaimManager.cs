@@ -26,11 +26,15 @@ namespace Business.Concrete
             _operationClaim = operationClaim;
         }
 
+        public IDataResult<OperationClaim> GetById(int operationClaimId)
+        {
+            return new SuccessDataResult<OperationClaim>(_operationClaim.Get(p => p.Id == operationClaimId));
+        }
+
         [CacheAspect(100)]//Duration Cache'te ne kadar dakika kalıcak değeri veriyorum vermezsem 60 sabit ayarladım.
         [PerformanceAspect(5)]//Eğer verdiğim saniyeyi(5) geçerse output'a yazıcak
         public IDataResult<List<OperationClaim>> GetList()
         {
-            Thread.Sleep(5000);
             return new SuccessDataResult<List<OperationClaim>>(_operationClaim.GetList().ToList());
         }
 

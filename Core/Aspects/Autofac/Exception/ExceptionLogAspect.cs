@@ -29,6 +29,7 @@ namespace Core.Aspects.Autofac.Exception
             //Benim gelen parametredeki hatayı ortaya çıkardığı hatayı yakalamam lazım
             LogDetailWithException logDetailWithException = GetLogDetail(invocation);//Sadce metod bilgileri gelir
             logDetailWithException.ExceptionMessage = e.Message;//Oluşan hata mesajı
+
             _loggerServiceBase.Error(logDetailWithException);
         }
 

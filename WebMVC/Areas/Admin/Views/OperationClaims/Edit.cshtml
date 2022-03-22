@@ -1,0 +1,40 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model Core.Entities.Concrete.OperationClaim
+
+@{
+    ViewData["Title"] = "Rolleri Güncelle";
+    var success = ViewBag.Success;
+    var message = ViewBag.Message;
+    var error = ViewBag.Error;
+}
+
+
+<h2>Rolleri Güncelle</h2>
+<hr />
+
+<form asp-action="Edit" asp-controller="OperationClaims" method="post" class="form-horizontal">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="Id" />
+
+    <div class="form-group">
+        <label class="control-label col-md-3">Rol Adı</label>
+        <div class="col-md-9">
+            <input type="text" asp-for="Name" class="form-control text-info" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-3 col-md-9">
+            <button class="btn btn-default fa fa-pencil guncellemebuton" style="margin-left: 5px; border: 2px solid #4db3ff;">
+                &nbsp; Öğrenci Sayılarını Güncelle
+            </button>
+        </div>
+    </div>
+</form>
+
+
+<p>@message</p>
+<p>@success</p>
+<p>@error</p>
+<a asp-action="Index" class="btn btn-default fas fa-backward" style="color: green"> Geri Dön</a>

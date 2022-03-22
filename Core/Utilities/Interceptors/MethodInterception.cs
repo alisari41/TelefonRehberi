@@ -33,7 +33,7 @@ namespace Core.Utilities.Interceptors
             {
                 isSuccess = false;
                 OnException(invocation,e);
-                throw;
+                throw new Exception(e.Message);
             }
             finally
             {

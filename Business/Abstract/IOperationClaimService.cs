@@ -10,6 +10,7 @@ namespace Business.Abstract
 {
     public interface IOperationClaimService
     {
+        IDataResult<OperationClaim> GetById(int operationClaimId);//Data başarlımı oldu başarısız mı onlarada bakıcam IDataResult ile
         IDataResult<List<OperationClaim>> GetList();
         IResult Add(OperationClaim operationClaim);// Data döndürmek istemiyorum.Başarılı mı oldum başarısız mı onlara bakmak istiyorum.
         IResult Delete(OperationClaim operationClaim);

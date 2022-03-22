@@ -1,0 +1,43 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model Core.Entities.Concrete.OperationClaim
+
+@{
+    ViewData["Title"] = "Add";
+    var success = ViewBag.Success;
+    var message = ViewBag.Message;
+    var error = ViewBag.Error;
+}
+
+<br />
+<h2>Fakülte Öğrenci Sayısı Ekle</h2>
+<hr />
+
+<form asp-action="Add" asp-controller="OperationClaims" method="post" class="form-horizontal">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="form-group">
+        <label class="control-label col-md-3">Rol</label>
+        <div class="col-md-9">
+            <input type="text" asp-for="Name" class="form-control text-info" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+    </div>
+    <
+    <div class="form-group">
+        <div class="col-md-offset-3 col-md-9">
+            <button class="btn btn-default guncellemebuton" style="margin-left: 5px; border: 2px solid #4db3ff;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-plus-fill" viewBox="0 0 16 16">
+                    <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                    <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z" />
+                </svg>&nbsp; Rol Ekle
+            </button>
+        </div>
+    </div>
+</form>
+<p>@message</p>
+<p>@success</p>
+<p>@error</p>
+<a asp-action="Index" class="btn btn-default fas fa-backward" style="color: green"> Geri Dön</a>
+
+
+

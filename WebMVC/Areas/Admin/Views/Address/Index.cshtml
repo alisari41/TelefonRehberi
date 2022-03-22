@@ -1,8 +1,8 @@
 ﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
-@model List<Core.Entities.Concrete.OperationClaim>
+@model List<Entities.Concrete.Address>
 
 @{
-    ViewData["Title"] = "Roller";
+    ViewData["Title"] = "Adresler";
 }
 
 
@@ -10,7 +10,7 @@
     <a asp-action="Add" class="btn btn-outline-warning ">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-plus-fill" viewBox="0 0 16 16">
             <path d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0zM9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1zM8.5 7v1.5H10a.5.5 0 0 1 0 1H8.5V11a.5.5 0 0 1-1 0V9.5H6a.5.5 0 0 1 0-1h1.5V7a.5.5 0 0 1 1 0z" />
-        </svg> Rol Ekle
+        </svg> Adres Ekle
     </a>
 </p>
 
@@ -18,7 +18,7 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Operation Claims</h3>
+                <h3 class="card-title">Address</h3>
 
                 <div class="card-tools">
                     <div class="input-group input-group-sm" style="width: 150px;">
@@ -42,7 +42,28 @@
                                 Id
                             </th>
                             <th>
-                                Name
+                                Mahalle
+                            </th>
+                            <th>
+                                Cadde
+                            </th>
+                            <th>
+                                Sokak
+                            </th>
+                            <th>
+                                Bina Numarası
+                            </th>
+                            <th>
+                                Kat
+                            </th>
+                            <th>
+                                İlçe
+                            </th>
+                            <th>
+                                İl
+                            </th>
+                            <th>
+                                Posta Kodu
                             </th>
                             <th>Güncelle</th>
                             <th>Sil</th>
@@ -56,7 +77,28 @@
                                     @Html.DisplayFor(modelItem => item.Id)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.Name)
+                                    @Html.DisplayFor(modelItem => item.Mahalle)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Cadde)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Sokak)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.BinaNo)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Kat)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.İlce)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.İl)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PostaKodu)
                                 </td>
                                 <td>
                                     <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-outline-success fas fa-edit   "> Güncelle</a>

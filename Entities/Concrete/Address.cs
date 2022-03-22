@@ -14,7 +14,7 @@ namespace Entities.Concrete
         public string Cadde { get; set; }
         public string Sokak { get; set; }
         public string BinaNo { get; set; }
-        public string Kat { get; set; }
+        public int Kat { get; set; }
         public string İlce { get; set; }
         public string İl { get; set; }
         public int PostaKodu { get; set; }

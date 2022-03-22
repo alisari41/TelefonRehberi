@@ -23,6 +23,11 @@ namespace Core.DataAccess.EntityFramework
             }
         }
 
+        public void AddRange(TEntity entity)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Delete(TEntity entity)
         {
             using (var context = new TContext())
@@ -40,6 +45,12 @@ namespace Core.DataAccess.EntityFramework
                 return context.Set<TEntity>().SingleOrDefault(filter);//verdiğimiz filter'a göre o data'nın gelmesini sağlıyorum
             }
         }
+
+        public TEntity Get(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public IList<TEntity> GetList(Expression<Func<TEntity, bool>> filter = null)
         {
             using (var context = new TContext())

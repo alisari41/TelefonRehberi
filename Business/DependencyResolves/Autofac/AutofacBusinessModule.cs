@@ -11,6 +11,7 @@ using Castle.DynamicProxy;
 using Core.Utilities.Interceptors;
 using Core.Utilities.Security.Jwt;
 using DataAccess.Abstract;
+using DataAccess.Concrete.Dapper;
 using DataAccess.Concrete.EntityFramework;
 
 
@@ -26,6 +27,12 @@ namespace Business.DependencyResolves.Autofac
 
             builder.RegisterType<UserOperationClaimManager>().As<IUserOperationClaimService>();
             builder.RegisterType<EfUserOperationClaimDal>().As<IUserOperationClaimDal>();
+
+
+            builder.RegisterType<AddressManager>().As<IAddressService>();
+            builder.RegisterType<DapperAddressDal>().As<IAddressDal>();
+
+
 
 
 

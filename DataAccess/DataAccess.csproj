@@ -13,8 +13,4 @@
     <ProjectReference Include="..\Core\Core.csproj" />
     <ProjectReference Include="..\Entities\Entities.csproj" />
   </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Concrete\Dapper\" />
-  </ItemGroup>
 </Project>

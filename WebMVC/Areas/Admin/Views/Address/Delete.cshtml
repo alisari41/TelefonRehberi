@@ -1,0 +1,82 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model Entities.Concrete.Address
+
+@{
+    ViewData["Title"] = "Rol Silme işlemi";
+}
+
+
+<h3 style="font-weight:bold">Bu Rolü silmek istediğinizden emin misiniz ?</h3>
+
+<div style="margin-left:25px">
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">
+            Adres Id
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt class="col-sm-3">
+            Mahalle
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.Mahalle)
+        </dd>
+        <dt class="col-sm-3">
+            Cadde
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.Cadde) &nbsp;
+        </dd>
+        <dt class="col-sm-3">
+            Sokak
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.Sokak)
+        </dd>
+        <dt class="col-sm-3">
+            Bina Numarası
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.BinaNo)
+        </dd>
+        <dt class="col-sm-3">
+            Kat
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.Kat)
+        </dd>
+        <dt class="col-sm-3">
+            İlce
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.İlce)
+        </dd>
+        <dt class="col-sm-3">
+            İl
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.İl)
+        </dd>
+        <dt class="col-sm-3">
+            Posta Kodu
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.PostaKodu)
+        </dd>
+    </dl>
+
+
+    <form asp-action="Delete">
+        <div class="form-actions no-color">
+            <a asp-action="Index" class="btn btn-outline-warning mb-2 ml-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-skip-backward-btn-fill" viewBox="0 0 16 16">
+                    <path d="M0 12V4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm11.21-6.907L8.5 7.028V5.5a.5.5 0 0 0-.79-.407L5 7.028V5.5a.5.5 0 0 0-1 0v5a.5.5 0 0 0 1 0V8.972l2.71 1.935a.5.5 0 0 0 .79-.407V8.972l2.71 1.935A.5.5 0 0 0 12 10.5v-5a.5.5 0 0 0-.79-.407z" />
+                </svg> Geri Dön
+            </a>
+            <input type="hidden" asp-for="Id" />
+            <button type="submit" class="btn btn-default fas fa-trash-alt silmebuton col-sm-2" style="margin-left:98px;border: 2px solid red;">&nbsp; Sil</button>
+        </div>
+    </form>
+</div>

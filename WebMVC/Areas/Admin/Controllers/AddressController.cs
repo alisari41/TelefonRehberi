@@ -6,23 +6,23 @@ using System.Threading.Tasks;
 using Business.Abstract;
 using Business.ValidationRules.FluentValidation;
 using Core.Entities.Concrete;
-using FormHelper;
+using Entities.Concrete;
 
 namespace WebMVC.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class OperationClaimsController : Controller
+    public class AddressController : Controller
     {
-        private IOperationClaimService _operationClaimService;
+        private IAddressService _addressService;
 
-        public OperationClaimsController(IOperationClaimService operationClaimService)
+        public AddressController(IAddressService addressService)
         {
-            _operationClaimService = operationClaimService;
+            _addressService = addressService;
         }
 
         public IActionResult Index()
         {
-            var result = _operationClaimService.GetList();
+            var result = _addressService.GetList();
             if (result.Success)
             {//Eğer doğru çalıştıysa datayı getir
                 return View(result.Data);
@@ -36,17 +36,17 @@ namespace WebMVC.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public IActionResult Add(OperationClaim operationClaim)
+        public IActionResult Add(Address address)
         {
 
             try
             {
-                var operationClaimValidator = new OperationClaimValidator();
-                var validationResult = operationClaimValidator.Validate(operationClaim);
+                var adressValidator = new AddressValidator();
+                var validationResult = adressValidator.Validate(address);
 
                 if (validationResult.IsValid)
                 {//Eğer doğru çalıştıysa datayı getir
-                    var result = _operationClaimService.Add(operationClaim);
+                    var result = _addressService.Add(address);
                     if (result.Success)
                     {
                         ViewBag.Success = result.Success;
@@ -66,69 +66,61 @@ namespace WebMVC.Areas.Admin.Controllers
             catch (Exception e)
             {
                 ViewBag.Error = e.Message;
-                //foreach (var item in e.)
-                //{
-                //    ModelState.AddModelError(item);
-                //}
             }
+            return View();
+        }
+        public IActionResult Edit(int id)
+        {
+            var result = _addressService.GetById(id);
+            return View(result.Data);
+        }
 
+        [HttpPost]
+        public IActionResult Edit(Address address)
+        {
+            try
+            {
+                var adressValidator = new AddressValidator();
+                var validationResult = adressValidator.Validate(address);
 
+                if (validationResult.IsValid)
+                {//Eğer doğru çalıştıysa datayı getir
+                    var result = _addressService.Update(address);
+                    if (result.Success)
+                    {
+                        ViewBag.Success = result.Success;
+                        return RedirectToAction(nameof(Index));
+                    }
+                    ViewBag.Message = result.Message;
+                }
+                else
+                {
+                    foreach (var item in validationResult.Errors)
+                    {
+                        ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                    }
+                }
+
+            }
+            catch (Exception e)
+            {
+                ViewBag.Error = e.Message;
+            }
             return View();
         }
 
-        public IActionResult Edit(int id)
-        {
-            var result = _operationClaimService.GetById(id);
-            return View(result.Data);
-        }
-
-        [HttpPost]
-        public IActionResult Edit(OperationClaim operationClaim)
-        {
-            try
-            {
-                var operationClaimValidator = new OperationClaimValidator();
-                var validationResult = operationClaimValidator.Validate(operationClaim);
-
-                if (validationResult.IsValid)
-                {//Eğer doğru çalıştıysa datayı getir
-                    var result = _operationClaimService.Update(operationClaim);
-                    if (result.Success)
-                    {
-                        ViewBag.Success = result.Success;
-                        return RedirectToAction(nameof(Index));
-                    }
-                    ViewBag.Message = result.Message;
-                }
-                else
-                {
-                    foreach (var item in validationResult.Errors)
-                    {
-                        ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
-                    }
-                }
-
-            }
-            catch (Exception e)
-            {
-                ViewBag.Error = e.Message;
-            }
-          
-
-            return View();//Eğer Hatalı ise Mesaj dönder.
-        }
         public IActionResult Delete(int id)
         {
-            var result = _operationClaimService.GetById(id);
+            var result = _addressService.GetById(id);
             return View(result.Data);
         }
 
         [HttpPost]
-        public IActionResult Delete(OperationClaim operationClaim)
+        public IActionResult Delete(Address address)
         {
             try
             {
-                var result = _operationClaimService.Delete(operationClaim);
+                var result = _addressService.Delete(address);
                 if (result.Success)
                 {//Eğer doğru çalıştıysa datayı getir
                     ViewBag.Success = result.Success;

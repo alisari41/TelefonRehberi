@@ -1,24 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using Core.Entities;
+using Microsoft.AspNetCore.Http;
 
-namespace Entities.Concrete
+namespace WebMVC.Models
 {
-    public class TelephoneDirectories : IEntity
+    public class FotografEkle
     {
-        public int Id { get; set; }
         public int AddressId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Title { get; set; }
         public string Email { get; set; }
-        public string PhotoUrl { get; set; }
+        public IFormFile PhotoUrl { get; set; }
         public string PhoneNumber { get; set; }
         public string? Fax { get; set; }
         public string? InternalNumber { get; set; }
-
     }
 }

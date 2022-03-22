@@ -1,52 +1,78 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Business.Abstract;
 using Business.ValidationRules.FluentValidation;
 using Core.Entities.Concrete;
-using FormHelper;
+using Entities.Concrete;
+using WebMVC.Models;
 
 namespace WebMVC.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class OperationClaimsController : Controller
+    public class TelephoneDirectoriesController : Controller
     {
-        private IOperationClaimService _operationClaimService;
 
-        public OperationClaimsController(IOperationClaimService operationClaimService)
+        private ITelephoneDirectoryService _telephoneDirectoryService;
+
+        public TelephoneDirectoriesController(ITelephoneDirectoryService telephoneDirectoryService)
         {
-            _operationClaimService = operationClaimService;
+            _telephoneDirectoryService = telephoneDirectoryService;
         }
 
         public IActionResult Index()
         {
-            var result = _operationClaimService.GetList();
+            var result = _telephoneDirectoryService.GetList();
             if (result.Success)
             {//Eğer doğru çalıştıysa datayı getir
                 return View(result.Data);
             }
             return View(result.Message);//Eğer Hatalı ise Mesaj dönder.
         }
-
         public IActionResult Add()
         {
             return View();
         }
 
         [HttpPost]
-        public IActionResult Add(OperationClaim operationClaim)
+        public IActionResult Add(FotografEkle fotografEkle)
         {
-
             try
             {
-                var operationClaimValidator = new OperationClaimValidator();
-                var validationResult = operationClaimValidator.Validate(operationClaim);
+                TelephoneDirectories telephoneDirectories = new TelephoneDirectories();
+
+                if (fotografEkle.PhotoUrl != null)
+                {
+                    var extension = Path.GetExtension(fotografEkle.PhotoUrl.FileName);
+                    var newImageName = Guid.NewGuid() + extension;
+                    var location = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/pictures/", newImageName);//Seçilen dosya yolu
+                    var stream = new FileStream(location, FileMode.Create);
+                    fotografEkle.PhotoUrl.CopyTo(stream);
+                    telephoneDirectories.PhotoUrl = newImageName;
+                }
+
+                telephoneDirectories.AddressId = fotografEkle.AddressId;
+                telephoneDirectories.FirstName = fotografEkle.FirstName;
+                telephoneDirectories.LastName = fotografEkle.LastName;
+                telephoneDirectories.Title = fotografEkle.Title;
+                telephoneDirectories.Email = fotografEkle.Email;
+                telephoneDirectories.PhoneNumber = fotografEkle.PhoneNumber;
+                telephoneDirectories.Fax = fotografEkle.Fax;
+                telephoneDirectories.InternalNumber = fotografEkle.InternalNumber;
+
+
+
+
+
+                var telephoneDirectoryValidator = new TelephoneDirectoryValidator();
+                var validationResult = telephoneDirectoryValidator.Validate(telephoneDirectories);
 
                 if (validationResult.IsValid)
                 {//Eğer doğru çalıştıysa datayı getir
-                    var result = _operationClaimService.Add(operationClaim);
+                    var result = _telephoneDirectoryService.Add(telephoneDirectories);
                     if (result.Success)
                     {
                         ViewBag.Success = result.Success;
@@ -66,33 +92,30 @@ namespace WebMVC.Areas.Admin.Controllers
             catch (Exception e)
             {
                 ViewBag.Error = e.Message;
-                //foreach (var item in e.)
-                //{
-                //    ModelState.AddModelError(item);
-                //}
             }
 
 
             return View();
         }
-
         public IActionResult Edit(int id)
         {
-            var result = _operationClaimService.GetById(id);
+            var result = _telephoneDirectoryService.GetById(id);
             return View(result.Data);
         }
 
         [HttpPost]
-        public IActionResult Edit(OperationClaim operationClaim)
+        public IActionResult Edit(TelephoneDirectories telephoneDirectories)
         {
             try
             {
-                var operationClaimValidator = new OperationClaimValidator();
-                var validationResult = operationClaimValidator.Validate(operationClaim);
+
+
+                var telephoneDirectoryValidator = new TelephoneDirectoryValidator();
+                var validationResult = telephoneDirectoryValidator.Validate(telephoneDirectories);
 
                 if (validationResult.IsValid)
-                {//Eğer doğru çalıştıysa datayı getir
-                    var result = _operationClaimService.Update(operationClaim);
+                {
+                    var result = _telephoneDirectoryService.Update(telephoneDirectories);
                     if (result.Success)
                     {
                         ViewBag.Success = result.Success;
@@ -113,22 +136,22 @@ namespace WebMVC.Areas.Admin.Controllers
             {
                 ViewBag.Error = e.Message;
             }
-          
+
 
             return View();
         }
         public IActionResult Delete(int id)
         {
-            var result = _operationClaimService.GetById(id);
+            var result = _telephoneDirectoryService.GetById(id);
             return View(result.Data);
         }
 
         [HttpPost]
-        public IActionResult Delete(OperationClaim operationClaim)
+        public IActionResult Delete(TelephoneDirectories telephoneDirectories)
         {
             try
             {
-                var result = _operationClaimService.Delete(operationClaim);
+                var result = _telephoneDirectoryService.Delete(telephoneDirectories);
                 if (result.Success)
                 {//Eğer doğru çalıştıysa datayı getir
                     ViewBag.Success = result.Success;
@@ -145,5 +168,6 @@ namespace WebMVC.Areas.Admin.Controllers
 
             return View();//Eğer Hatalı ise Mesaj dönder.
         }
+
     }
 }

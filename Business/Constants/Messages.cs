@@ -31,11 +31,35 @@ namespace Business.Constants
         public static string IlceNotNull = "Lütfen İlçe alanını boş geçmeyiniz!!";
         public static string IlNotNull = "Lütfen İl alanını boş geçmeyiniz!!";
         public static string PostaKoduNotNull = "Lütfen Posta Kodu alanını boş geçmeyiniz!!";
-        public static string KarakterUzunlugu50 = "Lütfen 50 karakterden fazla karater girmeyiniz!!";
+        public static string KarakterUzunlugu50 = "Lütfen 3 karakterden kısa 50 karakterden fazla karater girmeyiniz!!";
         public static string KarakterUzunlugu10 = "Lütfen 10 karakterden fazla karater girmeyiniz!!"; 
         public static string EnFazla75KatGirebilirsiniz = "En fazla 75 kat girebilirsiniz!!";
         public static string SifirdanBuyukOlmalidir = "Lütfen 0'dan büyük değer giriniz!!";
 
+
+        public static string AddressIdNotNull = "Adres Id alanı 0'dan büyük olmalıdır!";
+        public static string FirstNameNotNull = "Lütfen Ad alanını boş geçmeyiniz!!";
+        public static string LastNameNotNull = "Lütfen Soyad alanını boş geçmeyiniz!!";
+        public static string TitleNotNull = "Lütfen Ünvan alanını boş geçmeyiniz!!";
+        public static string EmailNotNull = "Lütfen Email alanını boş geçmeyiniz!!";
+        public static string EmailNot = "Geçerli bir e-posta değeri giriniz!";
+        public static string PhotoNotNull = "Lütfen fotoğraf alanını boş geçmeyiniz!!";
+
+        public static string PhoneNumberNotNull = "Lütfen telefon numaranısızı giriniz!!";
+        public static string PhoneNumberNot = "Lütfen telefon numaranızı kontrol ediniz fazla veya eksik numara giridiniz!!";
+        public static string PhoneNumberFormat = "Lütfen geçerli telefon numarası giriniz!!";
+
+
+        public static string FaxNotNull = "Lütfen fax numaranısızı giriniz!!";
+        public static string FaxFormat = "Lütfen geçerli fax numarası giriniz!!";
+
+
+        public static string InternalNumberNotNull = "Lütfen geçerli dahili numaranısızı giriniz!!";
+        public static string InternalNumberUzunluğu = "Lütfen 1 den büyük 10000 küçük değer giriniz!!";
+        
+        public static string TelephoneDirectoryAdded = "Telefon bilgisi başarıyla eklendi.";
+        public static string TelephoneDirectoryDeleted = "Telefon bilgisi başarıyla silindi.";
+        public static string TelephoneDirectoryUpdated = "Telefon bilgisi başarıyla güncellendi.";
 
 
 
@@ -52,6 +76,5 @@ namespace Business.Constants
         public static string OperationClaimNameAlreadyExists = "Bu rol zaten mevcut.";
 
 
-       
     }
 }

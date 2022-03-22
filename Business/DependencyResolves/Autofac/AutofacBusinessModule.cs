@@ -33,6 +33,8 @@ namespace Business.DependencyResolves.Autofac
             builder.RegisterType<DapperAddressDal>().As<IAddressDal>();
 
 
+            builder.RegisterType<TelephoneDirectoryManager>().As<ITelephoneDirectoryService>();
+            builder.RegisterType<DapperTelephoneDirectoryDal>().As<ITelephoneDirectoryDal>();
 
 
 

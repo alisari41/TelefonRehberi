@@ -37,6 +37,9 @@ namespace Business.DependencyResolves.Autofac
             builder.RegisterType<DapperTelephoneDirectoryDal>().As<ITelephoneDirectoryDal>();
 
 
+            builder.RegisterType<PhoneAddressManager>().As<IPhoneAddressService>();
+            builder.RegisterType<EfPhoneAddressDal>().As<IPhoneAddressDal>();
+
 
 
             builder.RegisterType<UserManager>().As<IUserService>();

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using Business.Abstract;
@@ -20,10 +21,13 @@ namespace Business.Concrete
     public class TelephoneDirectoryManager : ITelephoneDirectoryService
     {
         private ITelephoneDirectoryDal _telephoneDirectoryDal;
+        private IAddressDal _addressDal;
+        private IAddressService _addressService;
 
-        public TelephoneDirectoryManager(ITelephoneDirectoryDal telephoneDirectoryDal)
+        public TelephoneDirectoryManager(ITelephoneDirectoryDal telephoneDirectoryDal, IAddressDal addressDal)
         {
             _telephoneDirectoryDal = telephoneDirectoryDal;
+            _addressDal = addressDal;
         }
 
 
@@ -46,8 +50,19 @@ namespace Business.Concrete
         [ValidationAspect(typeof(TelephoneDirectoryValidator), Priority = 1)]
         public IResult Add(TelephoneDirectories telephoneDirectories)
         {
+
+            var result = AddressGetById(telephoneDirectories.AddressId);
+            if (result.Data==null)
+            {
+                return new ErrorResult(Messages.AddressAlreadyExists);
+            }
             _telephoneDirectoryDal.Add(telephoneDirectories);
             return new SuccessResult(Messages.TelephoneDirectoryAdded);
+        }
+        
+        public IDataResult<Address> AddressGetById(int addressId)
+        {
+            return new SuccessDataResult<Address>(_addressDal.Get(addressId));
         }
 
         [SecuredOperation("Admin")]
@@ -58,11 +73,17 @@ namespace Business.Concrete
             return new SuccessResult(Messages.TelephoneDirectoryDeleted);
         }
 
-       [SecuredOperation("Admin")]
+        [SecuredOperation("Admin")]
         [CacheRemoveAspect("ITelephoneDirectoryService.Get")]
         [ValidationAspect(typeof(TelephoneDirectoryValidator), Priority = 1)]
         public IResult Update(TelephoneDirectories telephoneDirectories)
         {
+            var result = AddressGetById(telephoneDirectories.AddressId);
+            if (result.Data == null)
+            {
+                return new ErrorResult(Messages.AddressAlreadyExists);
+            }
+
             _telephoneDirectoryDal.Update(telephoneDirectories);
             return new SuccessResult(Messages.TelephoneDirectoryUpdated);
         }

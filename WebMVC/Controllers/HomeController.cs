@@ -5,22 +5,28 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Business.Abstract;
 using WebMVC.Models;
 
 namespace WebMVC.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private IPhoneAddressService _phoneAddressService;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(IPhoneAddressService phoneAddressService)
         {
-            _logger = logger;
+            _phoneAddressService = phoneAddressService;
         }
 
         public IActionResult Index()
         {
-            return View();
+            var result =  _phoneAddressService.GetList();
+            if (result.Data.Count == 0)
+            {
+                return RedirectToAction("Warring");
+            }
+            return View(result.Data);
         }
 
         public IActionResult Privacy()

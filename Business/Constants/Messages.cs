@@ -74,7 +74,6 @@ namespace Business.Constants
         public static string AuthorizationDenied = "Yetkiniz Bulunmamaktadır.";
 
         public static string OperationClaimNameAlreadyExists = "Bu rol zaten mevcut.";
-
-
+        public static string AddressAlreadyExists = "Girilen adres id'e ait adres bulunmamktadır. Lütfen geçerli AdresId giriniz!!";
     }
 }

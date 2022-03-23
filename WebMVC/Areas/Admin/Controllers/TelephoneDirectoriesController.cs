@@ -77,9 +77,7 @@ namespace WebMVC.Areas.Admin.Controllers
                 telephoneDirectories.InternalNumber = fotografEkle.InternalNumber;
 
 
-
-
-
+                
                 var telephoneDirectoryValidator = new TelephoneDirectoryValidator();
                 var validationResult = telephoneDirectoryValidator.Validate(telephoneDirectories);
 

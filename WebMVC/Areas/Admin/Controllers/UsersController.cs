@@ -19,15 +19,6 @@ namespace WebMVC.Areas.Admin.Controllers
             _authService = authService;
         }
 
-        public IActionResult Index()
-        {
-            var result = _authService.GetList();
-            if (result.Success)
-            {//Eğer doğru çalıştıysa datayı getir
-                return View(result.Data);
-            }
-            return View(result.Message);//Eğer Hatalı ise Mesaj dönder.
-        }
         public IActionResult Register()
         {
             return View();

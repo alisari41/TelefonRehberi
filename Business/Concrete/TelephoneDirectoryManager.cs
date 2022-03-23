@@ -33,7 +33,7 @@ namespace Business.Concrete
         }
 
 
-        [SecuredOperation("Admin")]
+        [SecuredOperation("GetList")]
         [CacheAspect(100)]
         [PerformanceAspect(5)]
         public IDataResult<List<TelephoneDirectories>> GetList()

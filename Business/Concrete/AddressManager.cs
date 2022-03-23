@@ -32,7 +32,7 @@ namespace Business.Concrete
             return new SuccessDataResult<Address>(_addressDal.Get(addressId));
         }
 
-        [SecuredOperation("Admin")]
+        [SecuredOperation("GetList")]
         [CacheAspect(100)]
         [PerformanceAspect(5)]
         public IDataResult<List<Address>> GetList()

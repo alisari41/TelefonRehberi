@@ -33,6 +33,7 @@ namespace Business.Concrete
         }
 
 
+        [SecuredOperation("Admin")]
         [CacheAspect(100)]
         [PerformanceAspect(5)]
         public IDataResult<List<TelephoneDirectories>> GetList()
@@ -40,7 +41,7 @@ namespace Business.Concrete
             return new SuccessDataResult<List<TelephoneDirectories>>(_telephoneDirectoryDal.GetList().ToList());
         }
 
-       // [SecuredOperation("Admin")]
+        [SecuredOperation("Admin")]
         [CacheRemoveAspect("ITelephoneDirectoryService.Get")]
         [ValidationAspect(typeof(TelephoneDirectoryValidator), Priority = 1)]
         public IResult Add(TelephoneDirectories telephoneDirectories)
@@ -49,6 +50,7 @@ namespace Business.Concrete
             return new SuccessResult(Messages.TelephoneDirectoryAdded);
         }
 
+        [SecuredOperation("Admin")]
         [CacheRemoveAspect("ITelephoneDirectoryService.Get")]
         public IResult Delete(TelephoneDirectories telephoneDirectories)
         {
@@ -56,7 +58,7 @@ namespace Business.Concrete
             return new SuccessResult(Messages.TelephoneDirectoryDeleted);
         }
 
-       // [SecuredOperation("Admin")]
+       [SecuredOperation("Admin")]
         [CacheRemoveAspect("ITelephoneDirectoryService.Get")]
         [ValidationAspect(typeof(TelephoneDirectoryValidator), Priority = 1)]
         public IResult Update(TelephoneDirectories telephoneDirectories)

@@ -49,6 +49,7 @@ namespace Business.Concrete
             return new SuccessResult(Messages.AddressAdded);
         }
 
+        [SecuredOperation("Admin")]
         [CacheRemoveAspect("IAddressService.Get")]
         public IResult Delete(Address address)
         {
@@ -56,6 +57,7 @@ namespace Business.Concrete
             return new SuccessResult(Messages.AddressDeleted);
         }
 
+        [SecuredOperation("Admin")]
         [CacheRemoveAspect("IAddressService.Get")]
         [ValidationAspect(typeof(AddressValidator), Priority = 1)]
         public IResult Update(Address address)

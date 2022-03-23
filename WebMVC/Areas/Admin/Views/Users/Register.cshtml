@@ -1,0 +1,133 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model Entities.Dtos.UserForRegisterDto
+
+
+@{
+    ViewData["Title"] = "Kullanici Ekleme Paneli";
+    Layout = null;
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   
+    <script>
+
+        $(document).ready(function () {//Alert kapama süresi
+            // show the alert
+            setTimeout(function () {
+                $(".alert").alert('close');
+            }, 2000);
+        });
+
+    </script>
+</head>
+<body>
+    @{
+
+        if (ViewBag.Error != null)
+        {  /*Kullanıcı Adı veya Yanlış şifre girişi*/
+
+
+
+            <div class="alert alert-info  alert-dismissible fade show" role="alert" id="success-alert" style="margin-top:5px">
+                @*Alert icon eklemek için kullandım*@
+                <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Warning:"><use xlink:href="#exclamation-triangle-fill" /></svg>
+                <strong> @ViewBag.Error</strong>
+
+
+            </div>
+        }
+    }
+
+    <form asp-action="Register" method="post" class="container-fluid px-3">
+        <div class="row min-vh-100">
+            <div class="col-md-5 col-lg-6 col-xl-4 px-lg-5 d-flex align-items-center">
+                <div class="w-100 py-5">
+                    <div class="text-center">
+                        <img src="~/dist/img/Bimser-Logo.png" alt="" style="max-width: 6rem;" class="img-fluid mb-4 rounded">
+                        <h1 class="display-4 mb-3">Yönetici Kayıt OL</h1>
+                    </div>
+                    <div class="form-horizontal">
+                        @* Bu satır "form-horizontal" olunca çalıştı yoksa çalışmıyor *@
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                        <div class="form-group">
+                            <label> Ad</label>
+                            <input type="text" asp-for="FirstName" class="form-control text-info" />
+                            <span asp-validation-for="FirstName" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label> Soyad</label>
+                            <input type="text" asp-for="LastName" class="form-control text-info" />
+                            <span asp-validation-for="LastName" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label>E-mail</label>
+                            <input type="text" asp-for="Email" class="form-control text-info" placeholder="alisari41@outlook.com" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+
+                        </div>
+
+
+
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col">
+                                    <label>Şifre</label>
+                                </div>
+
+                            </div>
+
+                            <input type="password" asp-for="Password" class="form-control text-info" />
+                            <span asp-validation-for="Password" class="text-danger"></span>
+
+                        </div>
+
+
+
+                        <div class="form-group">
+                            <button class="btn btn-lg btn-block btn-outline-success mb-3" style="border: 2px solid green;">Kayıt OL</button>
+                        </div>
+
+                        @* <p class="text-center"><small class="text-muted text-center">Henüz bir hesabınız yok mu? <a href="kayitol.html">Kayıt ol</a>.</small></p>*@
+                        <p class="text-center">
+                            <small class="text-muted text-center">
+                                <a href="/Admin/AdminLogin" style="font-weight: bold; text-decoration: none"> Zaten bir Yönetici hesabım var ve giriş yapmak istiyorum</a>.
+                            </small>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-7 col-lg-6 col-xl-8 d-none d-lg-block">
+                <div style="background-image: url(https://i.hizliresim.com/IFFxQK.jpg);" class="bg-cover h-100 mr-n3"></div>
+            </div>
+        </div>
+    </form>
+
+
+
+
+
+
+
+</body>
+</html>
+

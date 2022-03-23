@@ -23,33 +23,6 @@ namespace WebMVC.Areas.Admin.Controllers
 
         public IActionResult Index()
         {
-            //return View();
-            //try
-            //{
-
-
-            //   //Eğer doğru çalıştıysa datayı getir
-            //        var result = _operationClaimService.Add(operationClaim);
-            //        if (result.Success)
-            //        {
-            //            ViewBag.Success = result.Success;
-            //            return RedirectToAction(nameof(Index));
-            //        }
-            //        ViewBag.Message = result.Message;
-            //    }
-
-
-            //}
-            //catch (Exception e)
-            //{
-            //    ViewBag.Error = e.Message;
-            //    //foreach (var item in e.)
-            //    //{
-            //    //    ModelState.AddModelError(item);
-            //    //}
-            //}
-
-
             return View();
         }
         [HttpPost]
@@ -58,7 +31,7 @@ namespace WebMVC.Areas.Admin.Controllers
             var userToLogin = _authService.Login(userForLoginDto);
             if (!userToLogin.Success)//işlem başarılı değilse
             {
-                ViewBag.UserNotFound = userToLogin.Message;
+                ViewBag.Error = userToLogin.Message;
                 return View();
             }
             //Eğer buraya geliyorsa zaten doğru dönmüş demek return dönüş yapıp çıktığı için 

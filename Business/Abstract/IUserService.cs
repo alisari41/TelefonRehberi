@@ -13,6 +13,7 @@ namespace Business.Abstract
     {
         IDataResult<List<User>> GetList();
         List<OperationClaim> GetClaims(User user); //Kullanıcın sahip olduğu rolleri getiricem
+        IDataResult<List<OperationClaim>> GetClaimsList(User user);
         void Add(User user);
         User GetByMail(string email);//Kullanıcıyı maili vasıtasıyla bulmak istiyorom
     }

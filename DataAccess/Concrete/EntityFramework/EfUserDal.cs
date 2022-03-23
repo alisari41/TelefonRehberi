@@ -33,5 +33,24 @@ namespace DataAccess.Concrete.EntityFramework
                 return result.ToList();
             }
         }
+
+        public IList<OperationClaim> GetClaimsList(User user)
+        {
+            using (var context = new TelefonRehberiContext())
+            {
+                //Gelen User bilgilerinin join işlemleri ile rollerini listeledim
+                var result = from operationCalaim in context.OperationClaims
+                    join userOperationClaim in context.UserOperationClaims
+                        on operationCalaim.Id equals userOperationClaim.OperationClaimId
+                    where userOperationClaim.UserId == user.Id //sınırlandırma yaptım
+                    select new OperationClaim
+                    {
+                        //Burdan bir operationclaim rol listesi döndürcem
+                        Id = operationCalaim.Id,
+                        Name = operationCalaim.Name
+                    };
+                return result.ToList();
+            }
+        }
     }
 }

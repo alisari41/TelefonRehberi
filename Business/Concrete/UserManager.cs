@@ -28,6 +28,11 @@ namespace Business.Concrete
             return _userDal.GetClaims(user);
         }
 
+        public IDataResult<List<OperationClaim>> GetClaimsList(User user)
+        {
+            return new SuccessDataResult<List<OperationClaim>>(_userDal.GetClaimsList(user).ToList());
+        }
+
         public void Add(User user)
         {
             _userDal.Add(user);

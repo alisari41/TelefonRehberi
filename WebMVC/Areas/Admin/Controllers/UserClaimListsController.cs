@@ -28,12 +28,23 @@ namespace WebMVC.Areas.Admin.Controllers
             return View(result.Message);//Eğer Hatalı ise Mesaj dönder.
         }
 
-        public List<OperationClaim> GetClaims(int id)
+
+        public IActionResult GetClaims(int id)
         {
             User user = new User();
             user.Id = id;
-            var result = _userService.GetClaims(user);
-            return result;
+            var result = _userService.GetClaimsList(user);
+            if (result.Data.Count == 0)
+            {
+                return (RedirectToAction("Warring"));
+            }
+            return View(result.Data);
+        }
+
+        public IActionResult Warring()
+        {
+            ViewBag.Message = "Kullanıcının Rolü / Görevi bulunmamaktadır!!";
+            return View();
         }
     }
 }

@@ -108,8 +108,6 @@ namespace WebMVC.Areas.Admin.Controllers
         {
             try
             {
-
-
                 var telephoneDirectoryValidator = new TelephoneDirectoryValidator();
                 var validationResult = telephoneDirectoryValidator.Validate(telephoneDirectories);
 

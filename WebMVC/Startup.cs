@@ -56,6 +56,10 @@ namespace WebMVC
                     };
                 });
 
+            // asagidaki ikisini Session icin kullandim 
+            services.AddDistributedMemoryCache();
+            services.AddSession();
+
             //Kendi oluþturduðum services
             services.AddDependencyResolvers(new ICoreModule[]
             {
@@ -91,6 +95,9 @@ namespace WebMVC
             app.UseAuthentication();//Giriþ izni gibi düþün giriþ yapabilir
 
             app.UseAuthorization();
+
+            //Session icin kullandim hafizida deger tutmak
+            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {

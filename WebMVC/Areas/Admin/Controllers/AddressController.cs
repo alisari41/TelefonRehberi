@@ -20,14 +20,30 @@ namespace WebMVC.Areas.Admin.Controllers
             _addressService = addressService;
         }
 
+        private string errors = "";
+        
         public IActionResult Index()
         {
-            var result = _addressService.GetList();
-            if (result.Success)
-            {//Eğer doğru çalıştıysa datayı getir
-                return View(result.Data);
+            try
+            {
+                var result = _addressService.GetList();
+                if (result.Success)
+                {//Eğer doğru çalıştıysa datayı getir
+                    return View(result.Data);
+                }
+                return View(result.Message);//Eğer Hatalı ise Mesaj dönder.
             }
-            return View(result.Message);//Eğer Hatalı ise Mesaj dönder.
+            catch (Exception e)
+            {
+                ViewBag.Error = e.Message;
+                return RedirectToAction("Warring",new{message=e.Message});
+            }
+            
+        }
+        public IActionResult Warring(string message)
+        {
+            ViewBag.Message = message;
+            return View();
         }
 
         public IActionResult Add()

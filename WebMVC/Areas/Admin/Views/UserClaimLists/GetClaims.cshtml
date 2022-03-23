@@ -7,7 +7,8 @@
 }
 
 
-<h3 style="font-weight:bold">Kullanıcının Rol / Görev Bilgisi</h3>
+<h3 style="font-weight:bold">&nbsp; @ViewBag.Ad @ViewBag.Soyad  Kullanıcısının Rol / Görev Bilgisi</h3>
+<h6><small>&nbsp; @ViewBag.Email</small></h6>
 
 <div style="margin-left:25px">
     <hr />
@@ -22,7 +23,7 @@
             }
         </dd>
         <dt class="col-sm-3">
-            Rol / Görev Adı
+            Rolleri 
         </dt>
         <dd class="col-sm-8">
             @foreach (var item in Model)

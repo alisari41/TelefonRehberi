@@ -28,11 +28,16 @@ namespace WebMVC.Areas.Admin.Controllers
             return View(result.Message);//Eğer Hatalı ise Mesaj dönder.
         }
 
+        
 
-        public IActionResult GetClaims(int id)
+        public IActionResult GetClaims(int id,string name,string lastName,string email)
         {
             User user = new User();
             user.Id = id;
+            ViewBag.Ad = name;
+            ViewBag.Soyad = lastName;
+            ViewBag.Email = email;
+
             var result = _userService.GetClaimsList(user);
             if (result.Data.Count == 0)
             {

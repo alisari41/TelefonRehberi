@@ -87,7 +87,9 @@
                                 @Html.DisplayFor(modelItem => item.PasswordHash)
                             </td>
                             <td>
-                                <a asp-action="GetClaims" asp-route-id="@item.Id" class="btn btn-outline-success fas fa-edit   "> Rollerini Getir</a>
+                                <a asp-action="GetClaims" asp-route-id="@item.Id" asp-route-name="@item.FirstName" 
+                                   asp-route-lastName="@item.LastName" asp-route-email="@item.Email"
+                                   class="btn btn-outline-success fas fa-edit   "> Rollerini Getir</a>
                             </td>
                         </tr>
                         }

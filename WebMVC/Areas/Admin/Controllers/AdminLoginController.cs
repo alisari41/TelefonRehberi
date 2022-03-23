@@ -36,7 +36,7 @@ namespace WebMVC.Areas.Admin.Controllers
             if (!userToLogin.Success)//işlem başarılı değilse
             {
                 ViewBag.Error = userToLogin.Message;
-                return (RedirectToAction("Error"));
+                return View();
             }
             //Eğer buraya geliyorsa zaten doğru dönmüş demek return dönüş yapıp çıktığı için 
             IActionResult response = Unauthorized();
@@ -49,14 +49,9 @@ namespace WebMVC.Areas.Admin.Controllers
             }
 
             ViewBag.Error = result.Message;
-            return (RedirectToAction("Error"));
-        }
-
-        public IActionResult Error()
-        {
-            ViewBag.Message = "An error occured...";
             return View();
         }
+        
 
 
        

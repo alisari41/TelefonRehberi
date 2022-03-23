@@ -16,6 +16,7 @@ using Core.Utilities.IoC;
 using Core.Utilities.Security.Encyption;
 using Core.Utilities.Security.Jwt;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Http;
 using Microsoft.IdentityModel.Tokens;
 
 namespace WebMVC
@@ -86,6 +87,21 @@ namespace WebMVC
             app.UseCors(builder => builder.WithOrigins("http://localhost:3000").AllowAnyHeader());//Burdan gelen bütün isteklere izin ver
 
             app.UseHttpsRedirection();
+
+            //Session icin kullandim hafizida deger tutmak
+            app.UseSession();
+            app.Use(async (context, next) =>
+            {
+                var token = context.Session.GetString("Token");
+                if (!string.IsNullOrEmpty(token))
+                {
+                    context.Request.Headers.Add("Authorization", "Bearer " + token);
+                }
+                await next();
+            });
+
+
+
             app.UseStaticFiles();
 
             app.UseRouting();
@@ -96,8 +112,7 @@ namespace WebMVC
 
             app.UseAuthorization();
 
-            //Session icin kullandim hafizida deger tutmak
-            app.UseSession();
+           
 
             app.UseEndpoints(endpoints =>
             {

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Business.Abstract;
+using Business.BusinessAspects.Autofac;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Caching;
@@ -31,6 +32,8 @@ namespace Business.Concrete
             return new SuccessDataResult<OperationClaim>(_operationClaim.Get(p => p.Id == operationClaimId));
         }
 
+
+        [SecuredOperation("Admin22")]
         [CacheAspect(100)]//Duration Cache'te ne kadar dakika kalıcak değeri veriyorum vermezsem 60 sabit ayarladım.
         [PerformanceAspect(5)]//Eğer verdiğim saniyeyi(5) geçerse output'a yazıcak
         public IDataResult<List<OperationClaim>> GetList()

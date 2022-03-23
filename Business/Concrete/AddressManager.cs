@@ -32,7 +32,7 @@ namespace Business.Concrete
             return new SuccessDataResult<Address>(_addressDal.Get(addressId));
         }
 
-        //[SecuredOperation("Admin")]
+        [SecuredOperation("Admin")]
         [CacheAspect(100)]
         [PerformanceAspect(5)]
         public IDataResult<List<Address>> GetList()
@@ -40,7 +40,7 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Address>>(_addressDal.GetList().ToList());
         }
 
-        //[SecuredOperation("Admin")]
+        [SecuredOperation("Admin")]
         [CacheRemoveAspect("IAddressService.Get")]//Yeni müşteri eklediği zaman Ön belleği temizleme işlemi. İçersinde IMusteriService.Get olanları Yani başı Get ile başlayanları temizler
         [ValidationAspect(typeof(AddressValidator), Priority = 1)]
         public IResult Add(Address address)

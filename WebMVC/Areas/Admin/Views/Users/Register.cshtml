@@ -69,20 +69,20 @@
 
                         <div class="form-group">
                             <label> Ad</label>
-                            <input type="text" asp-for="FirstName" class="form-control text-info" />
-                            <span asp-validation-for="FirstName" class="text-danger"></span>
+                            <input type="text" asp-for="FirstName" class="form-control text-info" id="txtAd"/>
+                            <span asp-validation-for="FirstName" class="text-danger" id="txtKotrol"></span>
                         </div>
 
                         <div class="form-group">
                             <label> Soyad</label>
-                            <input type="text" asp-for="LastName" class="form-control text-info" />
-                            <span asp-validation-for="LastName" class="text-danger"></span>
+                            <input type="text" asp-for="LastName" class="form-control text-info" id="txtSoyad"/>
+                            <span asp-validation-for="LastName" class="text-danger" id="txtKotrol"></span>
                         </div>
 
                         <div class="form-group">
                             <label>E-mail</label>
-                            <input type="text" asp-for="Email" class="form-control text-info" placeholder="alisari41@outlook.com" />
-                            <span asp-validation-for="Email" class="text-danger"></span>
+                            <input type="text" asp-for="Email" class="form-control text-info" placeholder="alisari41@outlook.com" id="txtEmail"/>
+                            <span asp-validation-for="Email" class="text-danger" id="txtKotrol"></span>
 
                         </div>
 
@@ -96,21 +96,21 @@
 
                             </div>
 
-                            <input type="password" asp-for="Password" class="form-control text-info" />
-                            <span asp-validation-for="Password" class="text-danger"></span>
+                            <input type="password" asp-for="Password" class="form-control text-info" id="txtGirisPassword"/>
+                            <span asp-validation-for="Password" class="text-danger" id="txtKotrol"></span>
 
                         </div>
 
 
 
                         <div class="form-group">
-                            <button class="btn btn-lg btn-block btn-outline-success mb-3" style="border: 2px solid green;">Kayıt OL</button>
+                            <button class="btn btn-lg btn-block btn-outline-success mb-3" style="border: 2px solid green;" id="btnSignUp">Kayıt OL</button>
                         </div>
 
                         @* <p class="text-center"><small class="text-muted text-center">Henüz bir hesabınız yok mu? <a href="kayitol.html">Kayıt ol</a>.</small></p>*@
                         <p class="text-center">
                             <small class="text-muted text-center">
-                                <a href="/Admin/AdminLogin" style="font-weight: bold; text-decoration: none"> Zaten bir Yönetici hesabım var ve giriş yapmak istiyorum</a>.
+                                <a href="/Admin/AdminLogin" style="font-weight: bold; text-decoration: none" id="btnSingIn"> Zaten bir Yönetici hesabım var ve giriş yapmak istiyorum</a>.
                             </small>
                         </p>
                     </div>

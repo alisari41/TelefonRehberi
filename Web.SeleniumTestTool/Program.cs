@@ -47,6 +47,17 @@ namespace Web.SeleniumTestTool
             telephoneDirectories.InternalNumber = "456";
 
 
+
+            UserForRegisterDto registerDto = new UserForRegisterDto();
+            registerDto.FirstName = "Fatih";
+            registerDto.LastName = "SARI";
+            registerDto.Email = "fatihyellow44@outlook.com";//Kullanıcı aynı ollmamalı test ederken 
+            registerDto.Password = "123456*";
+
+
+
+
+
             Elements elements = new Elements();
 
             elements.Link = @"https://localhost:44375/";
@@ -82,6 +93,7 @@ namespace Web.SeleniumTestTool
             elements.TxtFax = "txtFax";
             elements.TxtInternal = "txtInternalNo";
             elements.TxtError = "txtEror";
+            elements.TxtYetki = "txtYetki";
 
 
 
@@ -89,8 +101,9 @@ namespace Web.SeleniumTestTool
 
 
 
-            elements.BtnSingIn = "btnSingIn";
+            elements.BtnSignIn = "btnSingIn";
             elements.BtnLogout = "btnLogout";
+            elements.BtnSignUp = "btnSignUp";
             elements.BtnTables = "btnTables";
             elements.BtnKullancilar = "btnKullancilar";
             elements.BtnOperationClaims = "btnOperationClaims";
@@ -161,7 +174,7 @@ namespace Web.SeleniumTestTool
 
             Console.WriteLine("Giriş yap butonuna basılıyor.");
             // Giriş yap
-            driver.FindElement(By.Id(elements.BtnSingIn)).Click();
+            driver.FindElement(By.Id(elements.BtnSignIn)).Click();
 
 
 
@@ -188,7 +201,7 @@ namespace Web.SeleniumTestTool
             driver.FindElement(By.Id(elements.TxtGirisPassword)).SendKeys(loginDto.Password);
 
             // Giriş yap
-            driver.FindElement(By.Id(elements.BtnSingIn)).Click();
+            driver.FindElement(By.Id(elements.BtnSignIn)).Click();
 
             Thread.Sleep(2000);
 
@@ -448,9 +461,57 @@ namespace Web.SeleniumTestTool
             Console.WriteLine("Oturum Kapatılması test ediliyor..");
             driver.FindElement(By.Id(elements.BtnLogout)).Click();
 
-            Console.WriteLine("Admin Sayfasına Gidiliyor");
+            Console.WriteLine("Giriş yapmadan admin sayfasına girmek test ediliyor..");
             // Admin Sayfasına Git
             driver.FindElement(By.Id(elements.BtnAdmin)).Click();
+
+            Thread.Sleep(2000);
+
+            Console.WriteLine("Kullanıcı Kayıt sayfasına gitmesi test ediliyor..");
+            // Kayıt ol sayfasına git
+            driver.FindElement(By.Id(elements.BtnSignUp)).Click();
+
+
+            Thread.Sleep(1000);
+
+            Console.WriteLine("Kayıt olmak için bilgiler giriliyor..");
+            //Kayıt olmak için Bilgilerini doldour
+            driver.FindElement(By.Id(elements.TxtAd)).SendKeys(registerDto.FirstName);
+            driver.FindElement(By.Id(elements.TxtSoyad)).SendKeys(registerDto.LastName);
+            driver.FindElement(By.Id(elements.TxtEmail)).SendKeys(registerDto.Email);
+            driver.FindElement(By.Id(elements.TxtGirisPassword)).SendKeys(registerDto.Password);
+
+            Thread.Sleep(2000);
+            Console.WriteLine("Kullanıcı Kayıt ol işlemi test ediliyor");
+            // Kayıt ol sayfasına git
+            driver.FindElement(By.Id(elements.BtnSignUp)).Click();
+
+            Thread.Sleep(2000);
+            Console.WriteLine("Yetkisi bulunmayan kişi Adres tablosuna gitmesi test ediliyor...");
+            // Tables dropdown aç
+            driver.FindElement(By.Id(elements.BtnTables)).Click();
+            Thread.Sleep(1000);
+
+            // Adres tablosuna git id..
+            driver.FindElement(By.Id(elements.BtnAdres)).Click();
+
+            // Yetkisi olmayan kişi tabloyu görmeye çalışıyor...
+            try
+            {
+                Assert.IsNotNull(elements.TxtYetki);
+                Console.WriteLine("\n\n Yetkisinin olmadığını test ediliyor. \n\n");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+
+            Thread.Sleep(2000);
+
+
+
+            Console.WriteLine("Oturum Kapatılması test ediliyor...");
+            driver.FindElement(By.Id(elements.BtnLogout)).Click();
 
             Console.Read();
         }

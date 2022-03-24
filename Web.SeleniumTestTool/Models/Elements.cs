@@ -44,14 +44,15 @@ namespace Web.SeleniumTestTool.Models
         public string TxtInternal { get; set; }
         public string TxtError { get; set; }
 
-
+        public string TxtYetki { get; set; }
 
 
 
 
         public string BtnAdmin { get; set; }
-        public string BtnSingIn { get; set; }
+        public string BtnSignIn { get; set; }
         public string BtnLogout { get; set; }
+        public string BtnSignUp { get; set; }   
         public string BtnKullancilar { get; set; }
         public string BtnOperationClaims { get; set; }
         public string BtnUserOperationClaims { get; set; }

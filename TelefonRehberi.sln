@@ -15,7 +15,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebAPI", "WebAPI\WebAPI.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebMVC", "WebMVC\WebMVC.csproj", "{920DF6D3-88BC-4ED0-9041-1C1AC6BBABE8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web.SeleniumTestTool", "Web.SeleniumTestTool\Web.SeleniumTestTool.csproj", "{8AA2560B-A145-40A8-B251-123E89DFA445}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Web.SeleniumTestTool.UserAndTelephone", "Web.SeleniumTestTool\Web.SeleniumTestTool.UserAndTelephone.csproj", "{8AA2560B-A145-40A8-B251-123E89DFA445}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web.SeleniumTestTool.UserOperationClaim", "Web.SeleniumTestTool.UserOperationClaim\Web.SeleniumTestTool.UserOperationClaim.csproj", "{902B8D0F-C80E-4444-B3AE-7A8479BCC9D8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{8AA2560B-A145-40A8-B251-123E89DFA445}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8AA2560B-A145-40A8-B251-123E89DFA445}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8AA2560B-A145-40A8-B251-123E89DFA445}.Release|Any CPU.Build.0 = Release|Any CPU
+		{902B8D0F-C80E-4444-B3AE-7A8479BCC9D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{902B8D0F-C80E-4444-B3AE-7A8479BCC9D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{902B8D0F-C80E-4444-B3AE-7A8479BCC9D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{902B8D0F-C80E-4444-B3AE-7A8479BCC9D8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

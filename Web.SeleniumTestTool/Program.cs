@@ -1,15 +1,14 @@
 ﻿using System;
 using System.Threading;
 using Entities.Concrete;
-using NUnit;
 using Entities.Dtos;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.Extensions;
-using Web.SeleniumTestTool.Models;
+using Web.SeleniumTestTool.UserAndTelephone.Models;
 
-namespace Web.SeleniumTestTool
+namespace Web.SeleniumTestTool.UserAndTelephone
 {
     class Program
     {

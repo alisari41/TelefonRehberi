@@ -48,7 +48,7 @@ namespace Business.Concrete
             return new SuccessResult(Messages.UserOperationClaimAdded);
 
         }
-        [CacheRemoveAspect("IOperationClaimService.Get")]// Yeni Ürün Eklendiğin Ön Belleği temizle. İçerisinde IProductService.Get olanları Yani Başı 
+        [CacheRemoveAspect("IUserOperationClaimService.Get")]// Yeni Ürün Eklendiğin Ön Belleği temizle. İçerisinde IProductService.Get olanları Yani Başı 
         public IResult Delete(UserOperationClaim userOperationClaim)
         {
             _userOperationClaimDal.Delete(userOperationClaim);

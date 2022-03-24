@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -173,32 +174,28 @@
 
                             </ul>
                         </li>
-                        @Html.ActionLink(" Oturum Kapat", "Logout", new { }, new { @class = "nav-item nav-link ", style = " text-decoration: none;" })
-
-
-
-
+                       
 
 
 
 
                         <li class="nav-header">LABELS</li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a asp-action="Logout" class="nav-link">
                                 <i class="nav-icon far fa-circle text-danger"></i>
-                                <p class="text">Important</p>
+                                <p class="text">Oturumu Kapat</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a asp-action="Logout" class="nav-link">
                                 <i class="nav-icon far fa-circle text-warning"></i>
-                                <p>Warning</p>
+                                <p>Oturumu Kapat</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a asp-action="Logout" class="nav-link">
                                 <i class="nav-icon far fa-circle text-info"></i>
-                                <p>Informational</p>
+                                <p>Oturumu Kapat</p>
                             </a>
                         </li>
                     </ul>

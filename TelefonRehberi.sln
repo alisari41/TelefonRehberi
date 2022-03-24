@@ -3,17 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.32126.315
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entities", "Entities\Entities.csproj", "{02998E59-A48E-4114-A2CD-EC8CA8DCB899}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entities", "Entities\Entities.csproj", "{02998E59-A48E-4114-A2CD-EC8CA8DCB899}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "DataAccess\DataAccess.csproj", "{882E447E-64BD-421A-B4F0-2A2785A3E6D2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccess", "DataAccess\DataAccess.csproj", "{882E447E-64BD-421A-B4F0-2A2785A3E6D2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{57D47DF6-C25E-4799-8F7F-93778D2FA39C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "Core\Core.csproj", "{57D47DF6-C25E-4799-8F7F-93778D2FA39C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Business", "Business\Business.csproj", "{5946C8AF-1FC9-4088-AAA9-7F60AD0A48C1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Business", "Business\Business.csproj", "{5946C8AF-1FC9-4088-AAA9-7F60AD0A48C1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAPI", "WebAPI\WebAPI.csproj", "{B0C06FD4-3883-4496-8484-3366FB6C3424}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebAPI", "WebAPI\WebAPI.csproj", "{B0C06FD4-3883-4496-8484-3366FB6C3424}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebMVC", "WebMVC\WebMVC.csproj", "{920DF6D3-88BC-4ED0-9041-1C1AC6BBABE8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebMVC", "WebMVC\WebMVC.csproj", "{920DF6D3-88BC-4ED0-9041-1C1AC6BBABE8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web.SeleniumTestTool", "Web.SeleniumTestTool\Web.SeleniumTestTool.csproj", "{8AA2560B-A145-40A8-B251-123E89DFA445}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{920DF6D3-88BC-4ED0-9041-1C1AC6BBABE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{920DF6D3-88BC-4ED0-9041-1C1AC6BBABE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{920DF6D3-88BC-4ED0-9041-1C1AC6BBABE8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8AA2560B-A145-40A8-B251-123E89DFA445}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8AA2560B-A145-40A8-B251-123E89DFA445}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8AA2560B-A145-40A8-B251-123E89DFA445}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8AA2560B-A145-40A8-B251-123E89DFA445}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

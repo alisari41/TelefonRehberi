@@ -14,6 +14,8 @@ namespace Web.SeleniumTestTool.Models
         public string XPathTableKolon { get; set; }
         public string XPathAddressEdit { get; set; }
         public string XPathAddressDelete { get; set; }
+        public string XPathTelefonEdit { get; set; }
+        public string XPathTelefonDelete { get; set; }
 
 
         public string IdJwt { get; set; }
@@ -30,8 +32,26 @@ namespace Web.SeleniumTestTool.Models
         public string TxtPostaKodu { get; set; }
         public string TxtKontrol { get; set; }
 
+
+        public string TxtAdresId { get; set; }
+        public string TxtAd { get; set; }
+        public string TxtSoyad { get; set; }
+        public string TxtUnvan { get; set; }
+        public string TxtEmail { get; set; }
+        public string TxtResimUrl { get; set; }
+        public string TxtPhone { get; set; }
+        public string TxtFax { get; set; }
+        public string TxtInternal { get; set; }
+        public string TxtError { get; set; }
+
+
+
+
+
+
         public string BtnAdmin { get; set; }
         public string BtnSingIn { get; set; }
+        public string BtnLogout { get; set; }
         public string BtnKullancilar { get; set; }
         public string BtnOperationClaims { get; set; }
         public string BtnUserOperationClaims { get; set; }

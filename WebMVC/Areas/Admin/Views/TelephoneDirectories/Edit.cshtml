@@ -1,12 +1,10 @@
 ﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @model Entities.Concrete.TelephoneDirectories
 
-@{
-    ViewData["Title"] = "Kişi Bilgilerini Güncelle";
-    var success = ViewBag.Success;
-    var message = ViewBag.Message;
-    var error = ViewBag.Error;
-}
+@{ ViewData["Title"] = "Kişi Bilgilerini Güncelle";
+                var success = ViewBag.Success;
+                var message = ViewBag.Message;
+                var error = ViewBag.Error; }
 
 
 <h2>Rolleri Güncelle</h2>
@@ -19,71 +17,70 @@
     <div class="form-group">
         <label class="control-label col-md-3">Adres Id</label>
         <div class="col-md-9">
-            <input type="number" asp-for="AddressId" class="form-control text-info" />
-            <span asp-validation-for="AddressId" class="text-danger"></span>
-            @message
+            <input type="number" asp-for="AddressId" class="form-control text-info" id="txtAdresId" />
+            <span asp-validation-for="AddressId" class="text-danger" id="txtKotrol"></span>
+            <span id="txtEror">@message</span>
         </div>
     </div>
     <div class="form-group">
         <label class="control-label col-md-3">Ad</label>
         <div class="col-md-9">
-            <input type="text" asp-for="FirstName" class="form-control text-info" />
-            <span asp-validation-for="FirstName" class="text-danger"></span>
+            <input type="text" asp-for="FirstName" class="form-control text-info" id="txtAd" />
+            <span asp-validation-for="FirstName" class="text-danger" id="txtKotrol"></span>
         </div>
     </div>
     <div class="form-group">
         <label class="control-label col-md-3">Soyad</label>
         <div class="col-md-9">
-            <input type="text" asp-for="LastName" class="form-control text-info" />
-            <span asp-validation-for="LastName" class="text-danger"></span>
+            <input type="text" asp-for="LastName" class="form-control text-info" id="txtSoyad" />
+            <span asp-validation-for="LastName" class="text-danger" id="txtKotrol"></span>
         </div>
     </div>
     <div class="form-group">
         <label class="control-label col-md-3">Ünvan</label>
         <div class="col-md-9">
-            <input type="text" asp-for="Title" class="form-control text-info" />
-            <span asp-validation-for="Title" class="text-danger"></span>
+            <input type="text" asp-for="Title" class="form-control text-info" id="txtUnvan" />
+            <span asp-validation-for="Title" class="text-danger" id="txtKotrol"></span>
         </div>
     </div>
     <div class="form-group">
         <label class="control-label col-md-3">Email</label>
         <div class="col-md-9">
-            <input type="text" asp-for="Email" placeholder="alisari41@outlook.com" class="form-control text-info" />
-            <span asp-validation-for="Email" class="text-danger"></span>
+            <input type="text" asp-for="Email" placeholder="alisari41@outlook.com" class="form-control text-info" id="txtEmail" />
+            <span asp-validation-for="Email" class="text-danger" id="txtKotrol"></span>
         </div>
     </div>
     <div class="form-group">
         <label class="control-label col-md-3">Resim Url</label>
         <div class="col-md-9">
-            <input type="text" asp-for="PhotoUrl" class="form-control text-info" />
-            <span asp-validation-for="PhotoUrl" class="text-danger"></span>
+            <input type="text" asp-for="PhotoUrl" class="form-control text-info" id="txtResimUrl" />
+            <span asp-validation-for="PhotoUrl" class="text-danger" id="txtKotrol"></span>
         </div>
-    </div>
-    <div class="form-group">
+    </div><div class="form-group">
         <label class="control-label col-md-3">Telefon Numarası</label>
         <div class="col-md-9">
-            <input type="text" asp-for="PhoneNumber" placeholder="+90 534 082 9924" class="form-control text-info" />
-            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            <input type="text" asp-for="PhoneNumber" placeholder="+90 534 082 9924" class="form-control text-info" id="txtPhone" />
+            <span asp-validation-for="PhoneNumber" class="text-danger" id="txtKotrol"></span>
         </div>
     </div>
     <div class="form-group">
         <label class="control-label col-md-3">Fax Numarası</label>
         <div class="col-md-9">
-            <input type="text" asp-for="Fax" placeholder="534 082 9924" class="form-control text-info" />
-            <span asp-validation-for="Fax" class="text-danger"></span>
+            <input type="text" asp-for="Fax" placeholder="534 082 9924" class="form-control text-info" id="txtFax" />
+            <span asp-validation-for="Fax" class="text-danger" id="txtKotrol"></span>
         </div>
     </div>
     <div class="form-group">
         <label class="control-label col-md-3">Dahili Numara</label>
         <div class="col-md-9">
-            <input type="number" asp-for="InternalNumber" class="form-control text-info" />
-            <span asp-validation-for="InternalNumber" class="text-danger"></span>
+            <input type="number" asp-for="InternalNumber" class="form-control text-info" id="txtInternalNo" />
+            <span asp-validation-for="InternalNumber" class="text-danger" id="txtKotrol"></span>
         </div>
     </div>
 
     <div class="form-group">
         <div class="col-md-offset-3 col-md-9">
-            <button class="btn btn-outline-success " style="margin-left: 5px;">
+            <button class="btn btn-outline-success " style="margin-left: 5px;" id="btnEdit">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen-fill" viewBox="0 0 16 16">
                     <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001z" />
                 </svg> Kişi Bilgilerini Güncelle

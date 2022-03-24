@@ -36,7 +36,15 @@ namespace Web.SeleniumTestTool
             address.PostaKodu = 41900;
 
             TelephoneDirectories telephoneDirectories = new TelephoneDirectories();
-            telephoneDirectories.AddressId = 1;
+            telephoneDirectories.AddressId = 50;//Olmayan adres ekleme testi
+            telephoneDirectories.FirstName = "Fatih";
+            telephoneDirectories.LastName = "SARI";
+            telephoneDirectories.Title = "Elektrik";
+            telephoneDirectories.Email = "fatihyellow@hotmail.com";
+            telephoneDirectories.PhotoUrl = "C:/kocaelispor.jpg";
+            telephoneDirectories.PhoneNumber = "+90 536 985 5684";
+            telephoneDirectories.Fax = "562 985 9886";
+            telephoneDirectories.InternalNumber = "456";
 
 
             Elements elements = new Elements();
@@ -45,6 +53,7 @@ namespace Web.SeleniumTestTool
             elements.BtnGuvenlikDegil = "details-button";
             elements.BtnGuvenlikDegilKabulEt = "proceed-link";
             elements.BtnAdmin = "btnAdmin";
+
 
 
             elements.TxtGirisEmail = "txtGirisEmail";
@@ -63,9 +72,25 @@ namespace Web.SeleniumTestTool
 
 
 
+            elements.TxtAdresId = "txtAdresId";
+            elements.TxtAd = "txtAd";
+            elements.TxtSoyad = "txtSoyad";
+            elements.TxtUnvan = "txtUnvan";
+            elements.TxtEmail = "txtEmail";
+            elements.TxtResimUrl = "txtResimUrl";
+            elements.TxtPhone = "txtPhone";
+            elements.TxtFax = "txtFax";
+            elements.TxtInternal = "txtInternalNo";
+            elements.TxtError = "txtEror";
+
+
+
+
+
 
 
             elements.BtnSingIn = "btnSingIn";
+            elements.BtnLogout = "btnLogout";
             elements.BtnTables = "btnTables";
             elements.BtnKullancilar = "btnKullancilar";
             elements.BtnOperationClaims = "btnOperationClaims";
@@ -82,6 +107,8 @@ namespace Web.SeleniumTestTool
             elements.XPathTableKolon = "/html/body/div/main/section/div/div[2]/div/div/table/tbody/tr[3]";
             elements.XPathAddressEdit = "/html/body/div[1]/div[1]/main/div/div/div/div/div[2]/table/tbody/tr[7]/td[10]/a";
             elements.XPathAddressDelete = "/html/body/div[1]/div[1]/main/div/div/div/div/div[2]/table/tbody/tr[13]/td[11]/a";
+            elements.XPathTelefonEdit = "/html/body/div[1]/div[1]/main/div/div/div/div/div[2]/table/tbody/tr[4]/td[11]/a";
+            elements.XPathTelefonDelete = "/html/body/div[1]/div[1]/main/div/div/div/div/div[2]/table/tbody/tr[5]/td[12]/a";
 
 
 
@@ -110,7 +137,14 @@ namespace Web.SeleniumTestTool
             driver.FindElement(By.XPath(elements.XPathTableKolon)).Click();
             Thread.Sleep(2000);
 
+            Console.WriteLine("Sayfada aşşağı yukarı scrol gidiliyor..");
+            // sayfayı aşşağı doğru kaydır
+            driver.ExecuteJavaScript("window.scrollTo (0, document.body.scrollHeight)");
+            Thread.Sleep(3000);
 
+            //Syafayı yukarı doğru kaydırma
+            driver.ExecuteJavaScript("window.scrollTo (0, -document.body.scrollHeight)");
+            Thread.Sleep(2000);
 
             // Sayfa Aşşağı kaydırma kullan
 
@@ -162,7 +196,6 @@ namespace Web.SeleniumTestTool
             // Giriş Başarılımı test ediliyor
             try
             {
-
                 Assert.IsTrue(driver.FindElement(By.Id(elements.IdJwt)).Text.Contains(jwtTitle));
                 Console.WriteLine("\n\nGiriş Başarılı\n\n");
             }
@@ -247,7 +280,7 @@ namespace Web.SeleniumTestTool
             address.Sokak = "Gerikler";
             address.İlce = "Aşağı Yörükler";
             address.İl = "Tam Yörükler";
-            
+
             // sayfayı aşşağı doğru kaydır
             driver.ExecuteJavaScript("window.scrollTo (0, document.body.scrollHeight)");
             Thread.Sleep(3000);
@@ -262,7 +295,7 @@ namespace Web.SeleniumTestTool
             driver.FindElement(By.Id(elements.TxtSokak)).Clear();
             driver.FindElement(By.Id(elements.TxtIlce)).Clear();
             driver.FindElement(By.Id(elements.TxtIl)).Clear();
-            
+
             Thread.Sleep(2000);
 
             Console.WriteLine("Veriler girildikten sonra güncelleme işlemi yapılıyor..");
@@ -284,13 +317,6 @@ namespace Web.SeleniumTestTool
 
             Thread.Sleep(2000);
 
-            // sayfayı aşşağı doğru kaydır
-            driver.ExecuteJavaScript("window.scrollTo (0, document.body.scrollHeight)");
-            Thread.Sleep(3000);
-
-            //Syafayı yukarı doğru kaydırma
-            driver.ExecuteJavaScript("window.scrollTo (0, -document.body.scrollHeight)");
-            Thread.Sleep(2000);
 
 
             // Adresi sil
@@ -313,9 +339,118 @@ namespace Web.SeleniumTestTool
             driver.FindElement(By.Id(elements.BtnAdd)).Click();
 
 
+            Console.WriteLine("Telefon Rehberi değerleri giriliyor..");
+            //Adress Tablosunun Bilgilerini doldour
+            driver.FindElement(By.Id(elements.TxtAdresId)).SendKeys(telephoneDirectories.AddressId.ToString());
+            driver.FindElement(By.Id(elements.TxtAd)).SendKeys(telephoneDirectories.FirstName);
+            driver.FindElement(By.Id(elements.TxtSoyad)).SendKeys(telephoneDirectories.LastName);
+            driver.FindElement(By.Id(elements.TxtUnvan)).SendKeys(telephoneDirectories.Title);
+            driver.FindElement(By.Id(elements.TxtEmail)).SendKeys(telephoneDirectories.Email);
+            driver.FindElement(By.Id(elements.TxtResimUrl)).SendKeys(telephoneDirectories.PhotoUrl);
+            driver.FindElement(By.Id(elements.TxtPhone)).SendKeys(telephoneDirectories.PhoneNumber);
+            driver.FindElement(By.Id(elements.TxtFax)).SendKeys(telephoneDirectories.Fax);
+            driver.FindElement(By.Id(elements.TxtInternal)).SendKeys(telephoneDirectories.InternalNumber);
+
+
+            Console.WriteLine("Telefon Rehberine Kayıt etme işlemi test ediliyor..");
+            // Ekle id
+            driver.FindElement(By.Id(elements.BtnAdd)).Click();
+
+            // Validation Kontrol İşlemleri
+            try
+            {
+                Assert.IsNotNull(elements.TxtError);
+                Console.WriteLine("\n\n Girilen adresId'e ait adres var mı diye test ediliyor. \n\n");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+
+            Thread.Sleep(3000);
+            Console.WriteLine("Rehbere var olan adres girilerek Kişi kayıt işlemi test ediliyor..");
+            telephoneDirectories.AddressId = 10;
+            driver.FindElement(By.Id(elements.TxtAdresId)).Clear();
+            driver.FindElement(By.Id(elements.TxtAdresId)).SendKeys(telephoneDirectories.AddressId.ToString());
+            driver.FindElement(By.Id(elements.TxtResimUrl)).SendKeys(telephoneDirectories.PhotoUrl);
+
+            // Ekleme işlemini tamamla id
+            driver.FindElement(By.Id(elements.BtnAdd)).Click();
 
 
 
+
+
+
+
+
+
+            Thread.Sleep(2000);
+            Console.WriteLine("Seçilen telefonun biglilerini güncellemek için sayfasına gidildiği test ediliyor..");
+            // 4 Numaralı telefonun Bilgilerini güncellemek için sayfasına yönlendiriliyor.full xpath
+            driver.FindElement(By.XPath(elements.XPathTelefonEdit)).Click();
+
+            // Ad, Spyad ve Email alanlarını güncelleme testi yapılıyor
+            telephoneDirectories.FirstName = "Emre";
+            telephoneDirectories.LastName = "SARI";
+            telephoneDirectories.Email = "serseri4129@outlook.com";
+
+
+            // sayfayı aşşağı doğru kaydır
+            driver.ExecuteJavaScript("window.scrollTo (0, document.body.scrollHeight)");
+            Thread.Sleep(3000);
+
+            //Syafayı yukarı doğru kaydırma
+            driver.ExecuteJavaScript("window.scrollTo (0, -document.body.scrollHeight)");
+            Thread.Sleep(2000);
+
+            Console.WriteLine("Güncellenecek alanların textbox içerisi temizleniyor.");
+            // Kolonları temizleyelim
+            driver.FindElement(By.Id(elements.TxtAd)).Clear();
+            driver.FindElement(By.Id(elements.TxtSoyad)).Clear();
+            driver.FindElement(By.Id(elements.TxtEmail)).Clear();
+
+            Thread.Sleep(2000);
+
+            Console.WriteLine("Veriler girildikten sonra güncelleme işlemi yapılıyor..");
+            driver.FindElement(By.Id(elements.TxtAd)).SendKeys(telephoneDirectories.FirstName);
+            driver.FindElement(By.Id(elements.TxtSoyad)).SendKeys(telephoneDirectories.LastName);
+            driver.FindElement(By.Id(elements.TxtEmail)).SendKeys(telephoneDirectories.Email);
+
+            Thread.Sleep(2000);
+
+
+            //Bilgiler Girildikten sonra güncelle butonuna bas
+            driver.FindElement(By.Id(elements.BtnEdit)).Click();
+            Thread.Sleep(2000);
+
+
+
+
+
+
+
+            Console.WriteLine("Seçilen telefon bilgileri silinme işlemi test ediliyor..");
+            // Seçtiğim Adresi silmek için yönelendir. full xpath
+            driver.FindElement(By.XPath(elements.XPathTelefonDelete)).Click();
+
+            Thread.Sleep(2000);
+
+
+
+            // Telefon Bilgisini sil sil
+            driver.FindElement(By.Id(elements.BtnDelete)).Click();
+
+
+            Thread.Sleep(2000);
+
+            //Oturum Kapatılması test ediliyor
+            Console.WriteLine("Oturum Kapatılması test ediliyor..");
+            driver.FindElement(By.Id(elements.BtnLogout)).Click();
+
+            Console.WriteLine("Admin Sayfasına Gidiliyor");
+            // Admin Sayfasına Git
+            driver.FindElement(By.Id(elements.BtnAdmin)).Click();
 
             Console.Read();
         }

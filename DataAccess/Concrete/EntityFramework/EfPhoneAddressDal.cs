@@ -22,6 +22,7 @@ namespace DataAccess.Concrete.EntityFramework
                              join address in context.Address on telephoneDirectories.AddressId equals address.Id
                              select new Deneme()
                              {
+                                 Id = telephoneDirectories.Id,
                                  FirstName = telephoneDirectories.FirstName,
                                  LastName = telephoneDirectories.LastName,
                                  Title = telephoneDirectories.Title,

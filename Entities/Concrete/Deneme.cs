@@ -9,6 +9,7 @@ namespace Entities.Concrete
 {
     public class Deneme : IEntity
     {
+        public int  Id { get; set; }
         public string Mahalle { get; set; }
         public string Cadde { get; set; }
         public string Sokak { get; set; }

@@ -1,99 +1,175 @@
 ﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @model List<Entities.Concrete.Deneme>
 
-@{ ViewData["Title"] = "Telefon Rehberi"; }
+@{ ViewData["Title"] = "Telefon Rehberi";
+    var id = 0;
+}
 
 
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Table 08</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
 
-<div class="row">
-    <div class="col-12">
-        <div class="card">
-            <div class="card-header">
-                <h3 class="card-title">Telefon Rehberi</h3>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
+    <link href="~/table/css/style.css" rel="stylesheet" />
+    <style>
+        #kullaniciresim {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+
+        .table tbody td .email span {
+            display: block;
+        }
+
+            .table tbody td .email span:last-child {
+                font-size: 12px;
+                color: rgba(0, 0, 0, 0.3);
+            }
+    </style>
+</head>
+<body>
+<section class="ftco-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 text-center mb-4">
+                <h2 class="heading-section">Telefon Rehberi</h2>
             </div>
-            <!-- /.card-header -->
-            <div class=" table-responsive ">
-                <table class="table table-hover table-sm table-bordered" style="width:1107px">
-                    <thead>
-                    <tr>
-                        <th style="width:300px">
-                            Adı Soyadı
-                        </th>
-                        <th style="width:300px">
-                            Adres
-                        </th>
-                        <th style="width:180px">
-                            Telefon Numarası
-                        </th>
-                        <th style="width:160px">
-                            Fax Numarası
-                        </th>
-                        <th style="width:170px">
-                            Dahili Numara
-                        </th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    @foreach (var item in Model)
-                    {
-                        <tr>
-                            <td style="width:300px">
-                                <div class="row">
-                                    <div class="col-md-4" >
-                                        <img src="~/pictures/@item.PhotoUrl" id="kullaniciresim" style="width: 105px; height: 100px;" />
-                                    </div>
-                                    <div class="col-md-8">
-                                        
-                                        <div class="col-md-12 mt-2" >
-                                            <strong style="font-size: 21px; font:bolder">@item.FirstName @item.LastName.ToUpper()</strong>
-                                            <br />
-                                            <small>@item.Title</small>
-                                            <br />
-                                            <small>@item.Email</small>
-                                        </div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td style="width:300px">
-
-                                @*@Html.DisplayFor(modelItem => item.AddressId)*@
-                                @Html.DisplayFor(modelItem => item.Mahalle) Mahallesi
-
-                                @if (@item.Cadde != null)
-                                {
-                                    @Html.DisplayFor(modelItem => item.Cadde)
-                                    <small> Caddesi</small>}
-
-                                @Html.DisplayFor(modelItem => item.Sokak) Sokağı
-                                No: @Html.DisplayFor(modelItem => item.BinaNo)
-                                @Html.DisplayFor(modelItem => item.İlce)/
-                                @Html.DisplayFor(modelItem => item.İl)
-                                Posta kodu: @Html.DisplayFor(modelItem => item.PostaKodu)
-
-                            </td>
-                            <td style="width:180px">
-                                @Html.DisplayFor(modelItem => item.PhoneNumber)
-                            </td>
-                            <td style="width: 160px;">
-                                <strong style="background-color: darkblue; color: white">
-                                    <strong class="ml-1 mt-2 mr-1">
-                                        @Html.DisplayFor(modelItem => item.Fax)
-                                    </strong>
-                                </strong>
-                                
-                            </td>
-                            <td style="width:170px">
-                                @Html.DisplayFor(modelItem => item.InternalNumber)
-                            </td>
-
-                        </tr>}
-                    </tbody>
-                </table>
-            </div>
-            <!-- /.card-body -->
         </div>
-        <!-- /.card -->
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="h5 mb-4 text-center">Telefon Rehberi</h3>
+                <div class="table-wrap">
+                    <table class="table myaccordion table-hover " id="accordion">
+                        <thead>
+                        <tr>
+                            <th>Adı Soyadı</th>
+                            <th>Telefon Numarası</th>
+                            <th>Fax Numarası</th>
+                            <th>Dahili Numara</th>
+                            <th>&nbsp;</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach (var item in Model)
+                        {
+
+                            {
+                                id = id + 1;
+                            }
+                            if (id == 1)
+                            {
+                                <tr data-toggle="collapse" data-target="#collapseOne-@item.Id" aria-controls="collapseOne">
+                                    <td class="d-flex align-items-center">
+                                        <div class="row">
+                                            <img src="~/pictures/@item.PhotoUrl" class="rounded-circle" id="kullaniciresim" />
+                                            <div class="pl-3 email">
+                                                <span>@item.FirstName @item.LastName.ToUpper()</span>
+                                                <span>@item.Title - @item.Email</span>
+                                            </div>
+                                        </div>
+                                    </td>
+
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.PhoneNumber)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Fax)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.InternalNumber)
+                                    </td>
+                                    <td>
+                                        <i class="fa" aria-hidden="false"></i>
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td colspan="6" id="collapseOne-@item.Id" class="collapse show acc" data-parent="#accordion">
+                                        <p>
+                                            @Html.DisplayFor(modelItem => item.Mahalle) Mahallesi
+
+                                            @if (@item.Cadde != null)
+                                            {
+                                                @Html.DisplayFor(modelItem => item.Cadde)
+                                                <small> Caddesi</small>}
+
+                                            @Html.DisplayFor(modelItem => item.Sokak) Sokağı
+                                            No: @Html.DisplayFor(modelItem => item.BinaNo)
+                                            @Html.DisplayFor(modelItem => item.İlce)/
+                                            @Html.DisplayFor(modelItem => item.İl)
+                                            Posta kodu: @Html.DisplayFor(modelItem => item.PostaKodu)
+                                        </p>
+                                    </td>
+                                </tr> }
+                            else
+                            {
+                                <tr data-toggle="collapse" data-target="#collapseOne-@item.Id" aria-controls="collapseOne" class="collapsed">
+                                    <td>
+                                        <div class="row">
+                                            <img src="~/pictures/@item.PhotoUrl" class="rounded-circle" id="kullaniciresim" />
+                                            <div class="pl-3 email">
+                                                <span>@item.FirstName @item.LastName.ToUpper()</span>
+                                                <span>@item.Title - @item.Email</span>
+                                            </div>
+                                        </div>
+                                    </td>
+
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.PhoneNumber)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Fax)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.InternalNumber)
+                                    </td>
+                                    <td>
+                                        <i class="fa" aria-hidden="false"></i>
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td colspan="6" id="collapseOne-@item.Id" class="collapse  " data-parent="#accordion">
+                                        <p>
+                                            @Html.DisplayFor(modelItem => item.Mahalle) Mahallesi
+
+                                            @if (@item.Cadde != null)
+                                            {
+                                                @Html.DisplayFor(modelItem => item.Cadde)
+                                                <small> Caddesi</small>}
+
+                                            @Html.DisplayFor(modelItem => item.Sokak) Sokağı
+                                            No: @Html.DisplayFor(modelItem => item.BinaNo)
+                                            @Html.DisplayFor(modelItem => item.İlce)/
+                                            @Html.DisplayFor(modelItem => item.İl)
+                                            Posta kodu: @Html.DisplayFor(modelItem => item.PostaKodu)
+                                        </p>
+                                    </td>
+                                </tr>
+                            }
+
+                        }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
+</section>
+
+    <script src="~/table/js/jquery.min.js"></script>
+    <script src="~/table/js/popper.js"></script>
+    <script src="~/table/js/bootstrap.min.js"></script>
+    <script src="~/table/js/main.js"></script>
+
+</body>
+</html>

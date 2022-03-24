@@ -5,6 +5,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Business.Abstract;
 using Core.Entities.Concrete;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WebMVC.Areas.Admin.Controllers
 {
@@ -50,6 +53,14 @@ namespace WebMVC.Areas.Admin.Controllers
         {
             ViewBag.Message = "Kullanıcının Rolü / Görevi bulunmamaktadır!!";
             return View();
+        }
+
+        [AllowAnonymous]
+        public IActionResult Logout()
+        {
+            HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            HttpContext.Session.Clear();
+            return Redirect("/");
         }
     }
 }

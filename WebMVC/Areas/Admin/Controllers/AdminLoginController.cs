@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using Business.Abstract;
 using Business.ValidationRules.FluentValidation;
 using Entities.Dtos;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 
@@ -29,7 +31,7 @@ namespace WebMVC.Areas.Admin.Controllers
 
 
         [AllowAnonymous]
-        [HttpPost]
+        [HttpPost]//Login İşlemi
         public IActionResult Index(UserForLoginDto userForLoginDto)
         {
             var userToLogin = _authService.Login(userForLoginDto);
@@ -51,10 +53,18 @@ namespace WebMVC.Areas.Admin.Controllers
             ViewBag.Error = result.Message;
             return View();
         }
-        
+
+        [AllowAnonymous]
+        public IActionResult Logout()
+        {
+            HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            HttpContext.Session.Clear();
+            return Redirect("/");
+        }
 
 
-       
+
+
 
 
     }

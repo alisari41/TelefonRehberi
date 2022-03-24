@@ -8,6 +8,9 @@ using Business.Abstract;
 using Business.ValidationRules.FluentValidation;
 using Core.Entities.Concrete;
 using Entities.Concrete;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 using WebMVC.Models;
 
 namespace WebMVC.Areas.Admin.Controllers
@@ -176,6 +179,14 @@ namespace WebMVC.Areas.Admin.Controllers
 
 
             return View();//Eğer Hatalı ise Mesaj dönder.
+        }
+
+        [AllowAnonymous]
+        public IActionResult Logout()
+        {
+            HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            HttpContext.Session.Clear();
+            return Redirect("/");
         }
 
     }

@@ -34,7 +34,6 @@ namespace Business.Concrete
         [PerformanceAspect(5)]//Eğer verdiğim saniyeyi(5) geçerse output'a yazıcak
         public IDataResult<List<UserOperationClaim>> GetList()
         {
-            Thread.Sleep(5000);
             return new SuccessDataResult<List<UserOperationClaim>>(_userOperationClaimDal.GetList().ToList());
         }
         //Doğrulama işlemini FluentValidation olarak yaptım

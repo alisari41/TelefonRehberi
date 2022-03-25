@@ -28,7 +28,6 @@ namespace WebMVC.Controllers
             }
             return View(result.Data);
         }
-
         public IActionResult Privacy()
         {
             return View();

@@ -17,7 +17,7 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <link href="~/table/css/style.css" rel="stylesheet" />
+    <link href="~/table/css/style.css?Version=3" rel="stylesheet" />
     <style>
         #kullaniciresim {
             width: 50px;
@@ -33,6 +33,59 @@
                 font-size: 12px;
                 color: rgba(0, 0, 0, 0.3);
             }
+        .navbar {
+            position: relative;
+            transition: .5s;
+            z-index: 999;
+        }
+
+        .navbar.nav-sticky {
+            position: fixed;
+            top: 50;
+            width: 100%;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, .1);
+            transition: .5s;
+        }
+
+        .navbar .navbar-brand {
+            margin: 0;
+            color: #ffffff;
+            font-size: 45px;
+            line-height: 0px;
+            font-weight: 200;
+            text-transform: uppercase;
+        }
+
+        .navbar .navbar-brand img {
+            max-width: 100%;
+            max-height: 40px;
+        }
+
+        .navbar-dark .navbar-nav .nav-link,
+        .navbar-dark .navbar-nav .nav-link:focus,
+        .navbar-dark .navbar-nav .nav-link:hover,
+        .navbar-dark .navbar-nav .nav-link.active {
+            padding: 10px 10px 8px 10px;
+            color: #ffffff;
+        }
+
+        .navbar-dark .navbar-nav .nav-link:hover,
+        .navbar-dark .navbar-nav .nav-link.active {
+            color: #0796fe;
+            transition: none;
+        }
+
+        .navbar .dropdown-menu {
+            margin-top: 0;
+            border: 0;
+            border-radius: 0;
+            background: #f8f9fa;
+        }
+
+       
+
+        
+
     </style>
 </head>
 <body>
@@ -40,14 +93,14 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-6 text-center mb-4">
-                <h2 class="heading-section">Telefon Rehberi</h2>
+                <h2 class="heading-section" style="color: gold; ">Telefon Rehberi</h2>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12">
-                <h3 class="h5 mb-4 text-center">Telefon Rehberi</h3>
+                <h3 class="h5 mb-4 text-center" style="color: gold; ">Telefon Rehberi</h3>
                 <div class="table-wrap">
-                    <table class="table myaccordion table-hover " id="accordion">
+                    <table class="table  myaccordion table-hover " id="accordion">
                         <thead>
                         <tr>
                             <th>Adı Soyadı</th>
@@ -137,7 +190,7 @@
 
                                 </tr>
                                 <tr>
-                                    <td colspan="6" id="collapseOne-@item.Id" class="collapse  " data-parent="#accordion">
+                                    <td colspan="6" id="collapseOne-@item.Id" class="collapse acc " data-parent="#accordion">
                                         <p>
                                             @Html.DisplayFor(modelItem => item.Mahalle) Mahallesi
 

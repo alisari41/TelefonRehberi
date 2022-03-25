@@ -1,48 +1,198 @@
-﻿<!DOCTYPE html>
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - WebMVC</title>
+    <title>@ViewData["Title"] - Bimser Yazılım Test</title>
+    @*<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />*@
+    @*<link rel="stylesheet" href="~/css/site.css" />*@
+
+    <!-- Google Font -->
+    <!-- CSS Libraries -->
+
 
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="~/table/css/style.css" rel="stylesheet" />
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <link href="~/Anasayfa/lib/animate/animate.min.css" rel="stylesheet" />
+    <link href="~/Anasayfa/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link href="~/Anasayfa/font-awesome.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.css">
+    <link href="~/Anasayfa/css.min.css?Version=2" rel="stylesheet" />
+    <link href="~/Anasayfa/style.css?Version=2" rel="stylesheet" />
+    @* CSS'i kaydederken href en sonda olucak en sonunada ?Version=1 yazmak zoundayım yoksa çalışmıyor *@
+    @* CSS'te her değişiklik yaptığımda ?Version="..." nokta noktadaki sayı bir artar' *@
+
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" id="btnHome" asp-action="Index">WebMVC</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" id="btnHome" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/Admin" class="nav-item nav-link" id="btnAdmin" style=" text-decoration: none;">Admin</a>
-                        </li>
-                    </ul>
+        <!-- Top Bar Start -->
+        <div class="top-bar d-none d-md-block">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <div class="top-bar-left">
+                            <div class="text">
+                                <a href="/">  <h2>Bimser Yazılım Test</h2>   </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-9">
+                        <div class="top-bar-right">
+                            <div class="social">
+
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+        </div>
+        <!-- Top Bar End -->
+        <!-- Nav Bar Start -->
+        <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+
+            <a href="/">
+                <img src="~/dist/img/Bimser-Logo-yesil.png" alt="" id="duzcelogo" style="max-width: 175px;" class="img-fluid mb-6 rounded">
+            </a>
+
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                <ul class="navbar-nav ml-auto">
+                    <li>
+                        <a href="/Admin" class="nav-item nav-link" id="btnAdmin" style=" text-decoration: none;"> Yönetici Paneli</a>
+                    </li>
+                </ul>
+            </div>
+
         </nav>
+        <!-- Nav Bar End -->
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
+    <div>
+        <main role="main" class="pb-3" style="min-height: 780px; background-image: url(https://img.piri.net/mnresize/720/2000/resim/imagecrop/2019/04/18/11/55/resized_a2938-5e0396edceptelefonubilinmeyenleri.jpg);">
+            
+
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2022 - Bimser Yazılım Test - <a asp-area="" id="btnHome" asp-controller="Home" asp-action="Index">Home</a>
+    @*<footer class="border-top footer text-muted">
+            <div class="container">
+                &copy; 2021 - _162120012_AliSARI_DuzceUniversitesi_WebSitesi - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            </div>
+        </footer>*@
+
+    <!-- Footer -->
+    <footer>
+        <div class="wrapper flex container">
+            <div class="c-3 contact">
+                <p>Yeniköy Merkez Mh. Vatan Cd. KOU Teknopark</p>
+                <p>No: 83/A-6 41275 Başiskele, KOCAELİ</p>
+                <p>TEL : +90 262 341 43 14</p>
+                <p>FAKS: +90 262 341 38 94</p>
+            </div>
+            <div class="c-3">
+                <div class="input-group">
+                    <i class="fa fa-search"></i>
+                    <input type="text" value="" placeholder="Arama" />
+                </div>
+                <ul class="social">
+                    <li>
+                        <a href="">
+                            <i class="fa fa-instagram"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <i class="fa fa-whatsapp"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <i class="fa fa-youtube"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="c-3 footer-image dn">
+                @*<img src="footer.png"  />*@
+            </div>
+        </div>
+        <div class="copyright">
+            © Copyright -
+            @*<a href="#">Düzce Üniversitesi</a>*@
+            <a href="">Ali SARI</a>
+            - 2022
         </div>
     </footer>
+
+    <!-- JavaScript Libraries -->
+    
+
+    <script src="~/Anasayfa/lib/easing/easing.min.js"></script>
+
+    <script src="~/Anasayfa/lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <script src="~/Anasayfa/lib/waypoints/waypoints.min.js"></script>
+
+    <script src="~/Anasayfa/lib/counterup/counterup.min.js"></script>
+
+    <script src="~/Anasayfa/mail/jqBootstrapValidation.min.js"></script>
+
+    <script src="~/Anasayfa/mail/contact.js"></script>
+
+    @*<script src="~/js/main.js"></script>*@
+    @* MAİN.JS yorum satırı *@
+    <script>
+        $(window).scroll(function () {
+            if ($(this).scrollTop() > 0) {
+                $('.navbar').addClass('nav-sticky');
+            } else {
+                $('.navbar').removeClass('nav-sticky');
+            }
+        });
+        $('.dropdown-menu a.dropdown-toggle').on('click', function (e) {
+            if (!$(this).next().hasClass('show')) {
+                $(this).parents('.dropdown-menu').first().find('.show').removeClass('show');
+            }
+            var $subMenu = $(this).next('.dropdown-menu');
+            $subMenu.toggleClass('show');
+
+
+            $(this).parents('li.nav-item.dropdown.show').on('hidden.bs.dropdown', function (e) {
+                $('.dropdown-submenu .show').removeClass('show');
+            });
+
+
+            return false;
+        });
+    </script>
+    @*<script src="~/lib/jquery/dist/jquery.min.js"></script>*@
+    @*<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>*@
+    @*<script src="~/js/site.js" asp-append-version="true"></script>*@
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
+

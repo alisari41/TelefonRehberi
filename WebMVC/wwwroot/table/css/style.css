@@ -8196,13 +8196,14 @@ h1, h2, h3, h4, h5,
       -webkit-transition: none;
       -o-transition: none;
       transition: none; } }
-  .table thead th {
+.table thead th {
     border: none;
     padding: 30px;
     font-size: 14px;
-    color: #000;
-    border-bottom: 2px solid #ececec;
-    background: #fff; }
+    color: #ffc107;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.69);
+    background: rgba(0, 0, 0, 0.69);
+}
   .table tbody tr {
     margin-bottom: 10px;
     cursor: pointer;

@@ -65,19 +65,26 @@ namespace Web.SeleniumTestTool.UserOperationClaim
 
 
 
+            ChromeOptions chromeOptions = new ChromeOptions();
+            Console.WriteLine("Sertifika ayarlaması yapılıyor.");
+            chromeOptions.AcceptInsecureCertificates = true;
 
 
-            IWebDriver driver = new ChromeDriver(); //Hangi tarayıcı üzerinden işlem yapacağımı belirtiyorum.
+            IWebDriver driver = new ChromeDriver(chromeOptions); //Hangi tarayıcı üzerinden işlem yapacağımı belirtiyorum.
             driver.Navigate().GoToUrl(elements.Link); //Url'e gitme işlemi
 
-            Console.WriteLine("Güvenli değil! Uyarsını zorla geçiliyor...");
-
-            //Güvenli Değil
-            driver.FindElement(By.Id(elements.BtnGuvenlikDegil)).Click();
-
-            // Güvenli Değil fakat Yinede kabul et butonu
-            driver.FindElement(By.Id(elements.BtnGuvenlikDegilKabulEt)).Click();
+            Console.WriteLine("Tarayıcı boyutu büyütülüyor");
+            driver.Manage().Window.Maximize();//Tarayıcı boyutu büyütülüyor
             Thread.Sleep(3000);
+
+
+            //Console.WriteLine("Güvenli değil! Uyarsını zorla geçiliyor...");
+            ////Güvenli Değil
+            //driver.FindElement(By.Id(elements.BtnGuvenlikDegil)).Click();
+
+            //// Güvenli Değil fakat Yinede kabul et butonu
+            //driver.FindElement(By.Id(elements.BtnGuvenlikDegilKabulEt)).Click();
+            //Thread.Sleep(3000);
 
 
             Console.WriteLine("Admin Sayfasına Gidiliyor");
@@ -128,7 +135,7 @@ namespace Web.SeleniumTestTool.UserOperationClaim
             try
             {
                 Assert.IsNotNull(elements.TxtKontrol);
-                Console.WriteLine("\n\n Girilen değerler validation kurallarına uymamaktadır. \n\n");
+                Console.WriteLine("Girilen değerler validation kurallarına uymamaktadır.");
             }
             catch (Exception e)
             {
@@ -146,7 +153,7 @@ namespace Web.SeleniumTestTool.UserOperationClaim
             try
             {
                 Assert.IsNotNull(elements.TxtError);
-                Console.WriteLine("\n\n Daha önce var olan rol kayıt edilmeye çalışınca karşımıza çıkan sonuç kontrol ediliyor. \n\n");
+                Console.WriteLine("Daha önce var olan rol kayıt edilmeye çalışınca karşımıza çıkan sonuç kontrol ediliyor.");
             }
             catch (Exception e)
             {
@@ -227,12 +234,6 @@ namespace Web.SeleniumTestTool.UserOperationClaim
 
 
 
-
-
-
-
-
-
             Console.WriteLine("Seçilen kullanıcı rol biglilerini güncellemek için sayfasına gidildiği test ediliyor..");
             // x Numaralı Kullanıcı Rolün Bilgilerini güncellemek için sayfasına yönlendiriliyor.full xpath
             driver.FindElement(By.XPath(elements.XPathUserOperationClaimEdit)).Click();
@@ -271,6 +272,12 @@ namespace Web.SeleniumTestTool.UserOperationClaim
             //Oturum Kapatılması test ediliyor
             Console.WriteLine("Oturum Kapatılması test ediliyor..");
             driver.FindElement(By.Id(elements.BtnLogout)).Click();
+
+            Thread.Sleep(2000);
+            //Tarayıcı kapatılıyor
+            Console.WriteLine("Tarayıcı kapatılıyor...");
+            driver.Close();
+
 
             Console.Read();
         }

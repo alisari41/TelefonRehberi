@@ -50,7 +50,7 @@ namespace Web.SeleniumTestTool.UserAndTelephone
             UserForRegisterDto registerDto = new UserForRegisterDto();
             registerDto.FirstName = "Fatih";
             registerDto.LastName = "SARI";
-            registerDto.Email = "fatihyellow44@outlook.com";//Kullanıcı aynı ollmamalı test ederken 
+            registerDto.Email = "fatihyellow46@outlook.com";//Kullanıcı aynı ollmamalı test ederken 
             registerDto.Password = "123456*";
 
 
@@ -130,17 +130,25 @@ namespace Web.SeleniumTestTool.UserAndTelephone
 
 
 
-            IWebDriver driver = new ChromeDriver(); //Hangi tarayıcı üzerinden işlem yapacağımı belirtiyorum.
+            ChromeOptions chromeOptions = new ChromeOptions();
+            Console.WriteLine("Sertifika ayarlaması yapılıyor.");
+            chromeOptions.AcceptInsecureCertificates = true;//Sertifika sorunu ortadan kaldırıldı
+
+            IWebDriver driver = new ChromeDriver(chromeOptions); //Hangi tarayıcı üzerinden işlem yapacağımı belirtiyorum.
             driver.Navigate().GoToUrl(elements.Link); //Url'e gitme işlemi
 
-            Console.WriteLine("Güvenli değil! Uyarsını zorla geçiliyor...");
-
-            //Güvenli Değil
-            driver.FindElement(By.Id(elements.BtnGuvenlikDegil)).Click();
-
-            // Güvenli Değil fakat Yinede kabul et butonu
-            driver.FindElement(By.Id(elements.BtnGuvenlikDegilKabulEt)).Click();
+            Console.WriteLine("Tarayıcı boyutu büyütülüyor");
+            driver.Manage().Window.Maximize();//Tarayıcı boyutu büyütülüyor
             Thread.Sleep(3000);
+
+
+            //Console.WriteLine("Güvenli değil! Uyarsını zorla geçiliyor...");
+            ////Güvenli Değil
+            //driver.FindElement(By.Id(elements.BtnGuvenlikDegil)).Click();
+
+            //// Güvenli Değil fakat Yinede kabul et butonu
+            //driver.FindElement(By.Id(elements.BtnGuvenlikDegilKabulEt)).Click();
+            //Thread.Sleep(3000);
 
 
 
@@ -181,11 +189,11 @@ namespace Web.SeleniumTestTool.UserAndTelephone
             try
             {
                 Assert.IsTrue(driver.FindElement(By.Id(elements.IdPasswordError)).Text.Contains(passwordError));
-                Console.WriteLine("\n\nŞifre Hatalı Bilgisi alınmıştır\n\n");
+                Console.WriteLine("Şifre Hatalı Bilgisi alınmıştır.");
             }
             catch (Exception e)
             {
-                Console.WriteLine("\n\nYanlış Girilen Şifre Hatalı Bilgisi ALINAMAMIŞTIR.\n\n");
+                Console.WriteLine(e);
             }
 
             loginDto.Password = "123456*";
@@ -209,7 +217,7 @@ namespace Web.SeleniumTestTool.UserAndTelephone
             try
             {
                 Assert.IsTrue(driver.FindElement(By.Id(elements.IdJwt)).Text.Contains(jwtTitle));
-                Console.WriteLine("\n\nGiriş Başarılı\n\n");
+                Console.WriteLine("Giriş Başarılı");
             }
             catch (Exception e)
             {
@@ -263,11 +271,11 @@ namespace Web.SeleniumTestTool.UserAndTelephone
             try
             {
                 Assert.IsNotNull(elements.TxtKontrol);
-                Console.WriteLine("\n\n Girilen değerler validation kurallarına uymamaktadır. \n\n");
+                Console.WriteLine("Girilen değerler validation kurallarına uymamaktadır.");
             }
             catch (Exception e)
             {
-                Console.WriteLine("\n\n Doğrulamalar gözükmüyor. \n\n");
+                Console.WriteLine(e);
             }
 
 
@@ -372,7 +380,7 @@ namespace Web.SeleniumTestTool.UserAndTelephone
             try
             {
                 Assert.IsNotNull(elements.TxtError);
-                Console.WriteLine("\n\n Girilen adresId'e ait adres var mı diye test ediliyor. \n\n");
+                Console.WriteLine("Girilen adresId'e ait adres var mı diye test ediliyor.");
             }
             catch (Exception e)
             {
@@ -389,9 +397,7 @@ namespace Web.SeleniumTestTool.UserAndTelephone
             // Ekleme işlemini tamamla id
             driver.FindElement(By.Id(elements.BtnAdd)).Click();
 
-
-
-
+            
 
 
 
@@ -405,7 +411,7 @@ namespace Web.SeleniumTestTool.UserAndTelephone
             // Ad, Spyad ve Email alanlarını güncelleme testi yapılıyor
             telephoneDirectories.FirstName = "Emre";
             telephoneDirectories.LastName = "SARI";
-            telephoneDirectories.Email = "serseri4129@outlook.com";
+            telephoneDirectories.Email = "serseri41292941@outlook.com";
 
 
             // sayfayı aşşağı doğru kaydır
@@ -498,7 +504,7 @@ namespace Web.SeleniumTestTool.UserAndTelephone
             try
             {
                 Assert.IsNotNull(elements.TxtYetki);
-                Console.WriteLine("\n\n Yetkisinin olmadığını test ediliyor. \n\n");
+                Console.WriteLine("Yetkisinin olmadığını test ediliyor.");
             }
             catch (Exception e)
             {
@@ -511,6 +517,13 @@ namespace Web.SeleniumTestTool.UserAndTelephone
 
             Console.WriteLine("Oturum Kapatılması test ediliyor...");
             driver.FindElement(By.Id(elements.BtnLogout)).Click();
+
+
+            Thread.Sleep(2000);
+            //Tarayıcı kapatılıyor
+            Console.WriteLine("Tarayıcı kapatılıyor...");
+            driver.Close();
+
 
             Console.Read();
         }

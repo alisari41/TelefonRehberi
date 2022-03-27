@@ -50,7 +50,7 @@ namespace Web.SeleniumTestTool.UserAndTelephone
             UserForRegisterDto registerDto = new UserForRegisterDto();
             registerDto.FirstName = "Fatih";
             registerDto.LastName = "SARI";
-            registerDto.Email = "fatihyellow46@outlook.com";//Kullanıcı aynı ollmamalı test ederken 
+            registerDto.Email = "fatihyellow41@outlook.com";//Kullanıcı aynı ollmamalı test ederken 
             registerDto.Password = "123456*";
 
 
@@ -121,6 +121,7 @@ namespace Web.SeleniumTestTool.UserAndTelephone
             elements.XPathAddressDelete = "/html/body/div[1]/div[1]/main/div/div/div/div/div[2]/table/tbody/tr[13]/td[11]/a";
             elements.XPathTelefonEdit = "/html/body/div[1]/div[1]/main/div/div/div/div/div[2]/table/tbody/tr[4]/td[11]/a";
             elements.XPathTelefonDelete = "/html/body/div[1]/div[1]/main/div/div/div/div/div[2]/table/tbody/tr[5]/td[12]/a";
+            elements.XPathKullaniciDelete = "/html/body/div[1]/div[1]/main/div/div/div/div/div[2]/table/tbody/tr[3]/td[9]/a";
 
 
 
@@ -397,7 +398,7 @@ namespace Web.SeleniumTestTool.UserAndTelephone
             // Ekleme işlemini tamamla id
             driver.FindElement(By.Id(elements.BtnAdd)).Click();
 
-            
+
 
 
 
@@ -512,7 +513,23 @@ namespace Web.SeleniumTestTool.UserAndTelephone
             }
 
             Thread.Sleep(2000);
+            Console.WriteLine("Kullanıcı Tablosuna Gidiliyor.");
+            // Tables dropdown aç
+            driver.FindElement(By.Id(elements.BtnTables)).Click();
+            Thread.Sleep(1000);
 
+            // Adres tablosuna git id..
+            driver.FindElement(By.Id(elements.BtnKullancilar)).Click();
+
+
+            Console.WriteLine("Seçilen Kullanıcı bilgileri siliniyor");
+            // Seçtiğim kullnıcı silmek için yönelendir. full xpath
+            driver.FindElement(By.XPath(elements.XPathKullaniciDelete)).Click();
+
+            Thread.Sleep(2000);
+
+            // Kullanıcıyı sil
+            driver.FindElement(By.Id(elements.BtnDelete)).Click();
 
 
             Console.WriteLine("Oturum Kapatılması test ediliyor...");

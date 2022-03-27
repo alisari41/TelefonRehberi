@@ -75,5 +75,6 @@ namespace Business.Constants
 
         public static string OperationClaimNameAlreadyExists = "Bu rol zaten mevcut.";
         public static string AddressAlreadyExists = "Girilen adres id'e ait adres bulunmamktadır. Lütfen geçerli AdresId giriniz!!";
+        public static string UserDeleted = "Kullanıcı başarıyla silindi.";
     }
 }

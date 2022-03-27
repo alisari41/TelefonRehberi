@@ -59,6 +59,7 @@
                                 PasswordHash
                             </th>
                             <th>Rolleri Listele</th>
+                            <th>Sil</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -90,6 +91,9 @@
                                 <a asp-action="GetClaims" asp-route-id="@item.Id" asp-route-name="@item.FirstName" 
                                    asp-route-lastName="@item.LastName" asp-route-email="@item.Email"
                                    class="btn btn-outline-success fas fa-edit   "> Rollerini Getir</a>
+                            </td>
+                            <td>
+                                <a asp-action="Delete" asp-route-id="@item.Id" id="btnDelete" class="btn btn-outline-danger fas fa-trash-alt silmebuton"> Sil</a>
                             </td>
                         </tr>
                         }

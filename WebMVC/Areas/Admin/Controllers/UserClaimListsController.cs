@@ -48,7 +48,34 @@ namespace WebMVC.Areas.Admin.Controllers
             }
             return View(result.Data);
         }
+        public IActionResult Delete(int id)
+        {
+            var result = _userService.GetById(id);
+            return View(result.Data);
+        }
 
+        [HttpPost]
+        public IActionResult Delete(User user)
+        {
+            try
+            {
+                var result = _userService.Delete(user);
+                if (result.Success)
+                {//Eğer doğru çalıştıysa datayı getir
+                    ViewBag.Success = result.Success;
+                    return RedirectToAction(nameof(Index));
+                }
+
+                ViewBag.Message = result.Message;
+            }
+            catch (Exception e)
+            {
+                ViewBag.Error = e.Message;
+            }
+
+
+            return View();//Eğer Hatalı ise Mesaj dönder.
+        }
         public IActionResult Warring()
         {
             ViewBag.Message = "Kullanıcının Rolü / Görevi bulunmamaktadır!!";

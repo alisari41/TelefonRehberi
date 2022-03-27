@@ -10,6 +10,7 @@
         public string XPathAddressDelete { get; set; }
         public string XPathTelefonEdit { get; set; }
         public string XPathTelefonDelete { get; set; }
+        public string XPathKullaniciDelete { get; set; }
 
 
         public string IdJwt { get; set; }
